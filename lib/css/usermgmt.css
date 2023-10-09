@@ -1,0 +1,55 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --dark-gry-txt: #202020;
+    --grn-bkgrd: #7ba191;
+    --dark-brwn: #80461B;
+    --aged-white: #FCF5E5;
+    --bone: #e3dac9;
+    --yuji: 'Yuji Syuku', serif;
+    --raleway: 'Raleway', sans-serif;
+    --inter: 'Inter', sans-serif;
+}
+
+.font2 {
+    font-family: var(--raleway);
+}
+
+.font3 {
+    font-family: var(--inter);
+}
+
+.vis {
+    display: none !important;
+}
+
+table tbody {
+    cursor: pointer;
+}
+
+.profile-img {
+    width: 9vw !important;
+}
+
+table {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+table th, table td{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    max-width: 100px;
+    min-width: 20px;
+}
+
+label.col-form-label {
+    font-size: 0.85rem !important;
+}

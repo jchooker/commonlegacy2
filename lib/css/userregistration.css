@@ -1,0 +1,22 @@
+﻿:root {
+    --dark-gry-txt: #202020;
+    --grn-bkgrd: #7ba191;
+    --dark-brwn: #80461B;
+    --aged-white: #FCF5E5;
+    --yuji: 'Yuji Syuku', serif;
+    --raleway: 'Raleway', sans-serif;
+    --inter: 'Inter', sans-serif;
+}
+
+.profile-img {
+    width: 7vw !important;
+}
+
+.font2 {
+    font-family: var(--raleway);
+}
+
+.font3 {
+    font-family: var(--inter);
+    color: #383838 !important;
+}

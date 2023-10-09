@@ -1,0 +1,802 @@
+[
+  {
+    "id": 1,
+    "text": "Use an old idea."
+  },
+  {
+    "id": 2,
+    "text": "Accept advice."
+  },
+  {
+    "id": 3,
+    "text": "Accrete."
+  },
+  {
+    "id": 4,
+    "text": "A line has two sides."
+  },
+  {
+    "id": 5,
+    "text": "Allow an easement (an easement is the abandonment of a stricture)."
+  },
+  {
+    "id": 6,
+    "text": "Are there sections? Consider transitions."
+  },
+  {
+    "id": 7,
+    "text": "Ask people to work against their better judgement."
+  },
+  {
+    "id": 8,
+    "text": "Ask your body."
+  },
+  {
+    "id": 9,
+    "text": "Assemble some of the instruments in a group and treat the group."
+  },
+  {
+    "id": 10,
+    "text": "Balance the consistency principle with the inconsistency principle."
+  },
+  {
+    "id": 11,
+    "text": "Be dirty."
+  },
+  {
+    "id": 12,
+    "text": "Breathe more deeply."
+  },
+  {
+    "id": 13,
+    "text": "Bridges -build -burn."
+  },
+  {
+    "id": 14,
+    "text": "Cascades."
+  },
+  {
+    "id": 15,
+    "text": "Change instrument roles."
+  },
+  {
+    "id": 16,
+    "text": "Change nothing and continue with immaculate consistency."
+  },
+  {
+    "id": 17,
+    "text": "Children's voices -speaking -singing."
+  },
+  {
+    "id": 18,
+    "text": "Courage!"
+  },
+  {
+    "id": 19,
+    "text": "Cut a vital connection."
+  },
+  {
+    "id": 20,
+    "text": "Decorate, decorate ...".
+  },
+  {
+    "id": 21,
+    "text": "Listen to the quiet voice."
+  },
+  {
+    "id": 22,
+    "text": "Look at a very small object, look at its centre."
+  },
+  {
+    "id": 23,
+    "text": "Look at the order in which you do things."
+  },
+  {
+    "id": 24,
+    "text": "Look closely at the most embarrassing details and amplify them."
+  },
+  {
+    "id": 25,
+    "text": "Lowest common denominator check -single beat -single note -single riff."
+  },
+  {
+    "id": 26,
+    "text": "Make a blank valuable by putting it in an exquisite frame."
+  },
+  {
+    "id": 27,
+    "text": "Make an exhaustive list of everything you might do and do the last thing on the list."
+  },
+  {
+    "id": 28,
+    "text": "Make a sudden, destructive unpredictable action; incorporate."
+  },
+  {
+    "id": 29,
+    "text": "Mechanize something idiosyncratic."
+  },
+  {
+    "id": 30,
+    "text": "Mute and continue."
+  },
+  {
+    "id": 31,
+    "text": "Obfuscate purpose."
+  },
+  {
+    "id": 32,
+    "text": "Oddness is not necessarily strangeness."
+  },
+  {
+    "id": 33,
+    "text": "Overlay details."
+  },
+  {
+    "id": 34,
+    "text": "Pass it on."
+  },
+  {
+    "id": 35,
+    "text": "Pick a number, any number."
+  },
+  {
+    "id": 36,
+    "text": "Provide a new context."
+  },
+  {
+    "id": 37,
+    "text": "Remove all adjectives."
+  },
+  {
+    "id": 38,
+    "text": "Repeat the same thing, in different ways, until it becomes interesting."
+  },
+  {
+    "id": 39,
+    "text": "Revise completely."
+  },
+  {
+    "id": 40,
+    "text": "Reverse."
+  },
+  {
+    "id": 41,
+    "text": "Split into two."
+  },
+  {
+    "id": 42,
+    "text": "Start in the middle."
+  },
+  {
+    "id": 43,
+    "text": "Take a break, then try again."
+  },
+  {
+    "id": 44,
+    "text": "Transpose."
+  },
+  {
+    "id": 45,
+    "text": "Use a cliché."
+  },
+  {
+    "id": 46,
+    "text": "Use something old in a new way."
+  },
+  {
+    "id": 47,
+    "text": "Use the obvious."
+  },
+  {
+    "id": 48,
+    "text": "Vary the repetition."
+  },
+  {
+    "id": 49,
+    "text": "Work backwards."
+  },
+  {
+    "id": 50,
+    "text": "Write backwards."
+  },
+  {
+    "id": 51,
+    "text": "Write down everything that comes into your head for five minutes."
+  },
+  {
+    "id": 52,
+    "text": "Write the question, not the answer."
+  },
+  {
+    "id": 53,
+    "text": "Yes, and..."
+  },
+  {
+    "id": 54,
+    "text": "Your mistake was a hidden intention."
+  },
+  {
+    "id": 55,
+    "text": "Zigzag."
+  },
+  {
+    "id": 56,
+    "text": "Ask a friend to give you a new title."
+  },
+  {
+    "id": 57,
+    "text": "Ask your body to give you an answer."
+  },
+  {
+    "id": 58,
+    "text": "Blur the edges."
+  },
+  {
+    "id": 59,
+    "text": "Choose a word that you never use and use it twice."
+  },
+  {
+    "id": 60,
+    "text": "Collaborate with someone you don't like."
+  },
+  {
+    "id": 61,
+    "text": "Copy someone else's work."
+  },
+  {
+    "id": 62,
+    "text": "Cut a hole in the middle."
+  },
+  {
+    "id": 63,
+    "text": "Decorate with mistakes."
+  },
+  {
+    "id": 64,
+    "text": "Destroy the original."
+  },
+  {
+    "id": 65,
+    "text": "Don't be afraid to look stupid."
+  },
+  {
+    "id": 66,
+    "text": "Don't be afraid to be wrong."
+  },
+  {
+    "id": 67,
+    "text": "Don't be afraid to fail."
+  },
+  {
+    "id": 68,
+    "text": "Don't be afraid to make a mess."
+  },
+  {
+    "id": 69,
+    "text": "Don't be afraid to start over."
+  },
+  {
+    "id": 70,
+    "text": "Do the opposite of what you think you should do."
+  },
+  {
+    "id": 71,
+    "text": "Embrace the ambiguity."
+  },
+  {
+    "id": 72,
+    "text": "Experiment with different media."
+  },
+  {
+    "id": 73,
+    "text": "Find the hidden message."
+  },
+  {
+    "id": 74,
+    "text": "Give yourself permission to be creative."
+  },
+  {
+    "id": 75,
+    "text": "Go outside your comfort zone."
+  },
+  {
+    "id": 76,
+    "text": "Hide something in plain sight."
+  },
+  {
+    "id": 77,
+    "text": "Imagine the worst possible outcome."
+  },
+  {
+    "id": 78,
+    "text": "Interrupt yourself."
+  },
+  {
+    "id": 79,
+    "text": "Keep your eyes closed and write."
+  },
+  {
+    "id": 80,
+    "text": "Listen to the silence."
+  },
+  {
+    "id": 81,
+    "text": "Make a list of everything you don't like about your work."
+  },
+  {
+    "id": 82,
+    "text": "Make a list of everything you like about your work."
+  },
+  {
+    "id": 83,
+    "text": "Make something that doesn't make sense."
+  },
+  {
+    "id": 84,
+    "text": "Make something that is impossible to make."
+  },
+  {
+    "id": 85,
+    "text": "Make something that you hate."
+  },
+  {
+    "id": 86,
+    "text": "Narrow your focus."
+  },
+  {
+    "id": 87,
+    "text": "Obfuscate your intentions."
+  },
+  {
+    "id": 88,
+    "text": "Play with time."
+  },
+  {
+    "id": 89,
+    "text": "Remove all goals."
+  },
+  {
+    "id": 90,
+    "text": "Repeat until it becomes boring."
+  },
+  {
+    "id": 91,
+    "text": "Replace one element with something else."
+  },
+  {
+    "id": 92,
+    "text": "Restrict resources."
+  },
+  {
+    "id": 93,
+    "text": "Set a time limit."
+  },
+  {
+    "id": 94,
+    "text": "Simplify."
+  },
+  {
+    "id": 95,
+    "text": "Start with the ending."
+  },
+  {
+    "id": 96,
+    "text": "Take a break."
+  },
+  {
+    "id": 97,
+    "text": "Take a chance."
+  },
+  {
+    "id": 98,
+    "text": "Take your time."
+  },
+  {
+    "id": 99,
+    "text": "Think like a child."
+  },
+  {
+    "id": 100,
+    "text": "Use your intuition."
+  },
+  {
+    "id": 101,
+    "text": "Use the telephone."
+  },
+  {
+    "id": 102,
+    "text": "Use the unexpected."
+  },
+  {
+    "id": 103,
+    "text": "Wait."
+  },
+  {
+    "id": 104,
+    "text": "Work with your hands."
+  },
+  {
+    "id": 105,
+    "text": "Write a letter to yourself."
+  },
+  {
+    "id": 106,
+    "text": "Write a poem about your work."
+  },
+  {
+    "id": 107,
+    "text": "Write a story about your work."
+  },
+  {
+    "id": 108,
+    "text": "Write down everything that comes into your head for ten minutes."
+  },
+  {
+    "id": 109,
+    "text": "Write down your dreams."
+  },
+  {
+    "id": 110,
+    "text": "Yawn."
+  },
+  {
+    "id": 111,
+    "text": "Zoom in."
+  },
+  {
+    "id": 112,
+    "text": "Change the meaning of a word."
+  },
+  {
+    "id": 113,
+    "text": "Choose a random word and use it as the title."
+  },
+  {
+    "id": 114,
+    "text": "Color outside the lines."
+  },
+  {
+    "id": 115,
+    "text": "Cut up your work and rearrange it."
+  },
+  {
+    "id": 116,
+    "text": "Do something that scares you."
+  },
+  {
+    "id": 117,
+    "text": "Embrace the chaos."
+  },
+  {
+    "id": 118,
+    "text": "Experiment with different genres."
+  },
+  {
+    "id": 119,
+    "text": "Find the humor in the situation."
+  },
+  {
+    "id": 120,
+    "text": "Give up."
+  },
+  {
+    "id": 121,
+    "text": "Go on a journey."
+  },
+  {
+    "id": 122,
+    "text": "Make a list of your fears."
+  },
+  {
+    "id": 123,
+    "text": "Make a list of your strengths."
+  },
+  {
+    "id": 124,
+    "text": "Make a mistake."
+  },
+  {
+    "id": 125,
+    "text": "Make something that is beautiful."
+  },
+  {
+    "id": 126,
+    "text": "Make something that is useful."
+  },
+  {
+    "id": 127,
+    "text": "Make something that is weird."
+  },
+  {
+    "id": 128,
+    "text": "Make something that you can't explain."
+  },
+  {
+    "id": 129,
+    "text": "Meditate."
+  },
+  {
+    "id": 130,
+    "text": "Mix and match."
+  },
+  {
+    "id": 131,
+    "text": "Narrate your work as you are making it."
+  },
+  {
+    "id": 132,
+    "text": "Observe the silence."
+  },
+  {
+    "id": 133,
+    "text": "Play with perspective."
+  },
+  {
+    "id": 134,
+    "text": "Procrastinate more, or less."
+  },
+  {
+    "id": 135,
+    "text": "Question everything."
+  },
+  {
+    "id": 136,
+    "text": "Read a book about creativity."
+  },
+  {
+    "id": 137,
+    "text": "Repeat the same thing over and over again, until it becomes different."
+  },
+  {
+    "id": 138,
+    "text": "Set a timer for five minutes and work on your project without stopping."
+  },
+  {
+    "id": 139,
+    "text": "Take a walk in nature."
+  },
+  {
+    "id": 140,
+    "text": "Talk to a stranger."
+  },
+  {
+    "id": 141,
+    "text": "Translate your work into another language."
+  },
+  {
+    "id": 142,
+    "text": "Use a thesaurus to find new words."
+  },
+  {
+    "id": 143,
+    "text": "Use a random number generator to make decisions."
+  },
+  {
+    "id": 144,
+    "text": "Visualize your success."
+  },
+  {
+    "id": 145,
+    "text": "Wait until tomorrow."
+  },
+  {
+    "id": 146,
+    "text": "Work backwards."
+  },
+  {
+    "id": 147,
+    "text": "Write a letter to your future self."
+  },
+  {
+    "id": 148,
+    "text": "Write a poem about your fear."
+  },
+  {
+    "id": 149,
+    "text": "Write a story about your failure."
+  },
+  {
+    "id": 150,
+    "text": "Write down your thoughts and feelings."
+  },
+  {
+    "id": 151,
+    "text": "Yell."
+  },
+  {
+    "id": 152,
+    "text": "Zoom out."
+  },
+  {
+    "id": 153,
+    "text": "Ask a child for help."
+  },
+  {
+    "id": 154,
+    "text": "Become an expert in something."
+  },
+  {
+    "id": 155,
+    "text": "Collaborate with someone you admire."
+  },
+  {
+    "id": 156,
+    "text": "Create a new persona."
+  },
+  {
+    "id": 157,
+    "text": "Destroy something that you love."
+  },
+  {
+    "id": 158,
+    "text": "Do something that you've never done before."
+  },
+  {
+    "id": 159,
+    "text": "Embrace your inner child."
+  },
+  {
+    "id": 160,
+    "text": "Experiment with different mediums."
+  },
+  {
+    "id": 161,
+    "text": "Find a mentor."
+  },
+  {
+    "id": 162,
+    "text": "Give yourself a deadline."
+  },
+  {
+    "id": 163,
+    "text": "Go on a journey of self-discovery."
+  },
+  {
+    "id": 164,
+    "text": "Have a conversation with yourself."
+  },
+  {
+    "id": 165,
+    "text": "Hide something from yourself."
+  },
+  {
+    "id": 166,
+    "text": "Listen to your intuition."
+  },
+  {
+    "id": 167,
+    "text": "Make a list of your goals."
+  },
+  {
+    "id": 168,
+    "text": "Make a map of your thoughts."
+  },
+  {
+    "id": 169,
+    "text": "Meditate on your fears."
+  },
+  {
+    "id": 170,
+    "text": "Never give up."
+  },
+  {
+    "id": 171,
+    "text": "Observe the world as if you were a stranger."
+  },
+  {
+    "id": 172,
+    "text": "Play with the rules."
+  },
+  {
+    "id": 173,
+    "text": "Repeat until it becomes boring, then repeat one more time."
+  },
+  {
+    "id": 174,
+    "text": "Set a timer for one minute and work on your project without stopping."
+  },
+  {
+    "id": 175,
+    "text": "Take a break and do something completely different."
+  },
+  {
+    "id": 176,
+    "text": "Take a walk in a new place."
+  },
+  {
+    "id": 177,
+    "text": "Talk to someone who is very different from you."
+  },
+  {
+    "id": 178,
+    "text": "Think about the opposite of what you are trying to do."
+  },
+  {
+    "id": 179,
+    "text": "Turn your work upside down."
+  },
+  {
+    "id": 180,
+    "text": "Use a metaphor."
+  },
+  {
+    "id": 181,
+    "text": "Use a simile."
+  },
+  {
+    "id": 182,
+    "text": "Use a symbol."
+  },
+  {
+    "id": 183,
+    "text": "Use your senses."
+  },
+  {
+    "id": 184,
+    "text": "Write a letter to your past self."
+  },
+  {
+    "id": 185,
+    "text": "Write a letter to your future self."
+  },
+  {
+    "id": 186,
+    "text": "Write a poem about your hopes."
+  },
+  {
+    "id": 187,
+    "text": "Write a story about your dreams."
+  },
+  {
+    "id": 188,
+    "text": "Write down your dreams."
+  },
+  {
+    "id": 189,
+    "text": "Yawn again."
+  },
+  {
+    "id": 190,
+    "text": "Zoom in."
+  },
+  {
+    "id": 191,
+    "text": "Ask a question."
+  },
+  {
+    "id": 192,
+    "text": "Be open to failure."
+  },
+  {
+    "id": 193,
+    "text": "Be present."
+  },
+  {
+    "id": 194,
+    "text": "Be willing to change."
+  },
+  {
+    "id": 195,
+    "text": "Gather thorns, avoid the flowers."
+  },
+  {
+    "id": 196,
+    "text": "Challenge yourself."
+  },
+  {
+    "id": 197,
+    "text": "Experiment."
+  },
+  {
+    "id": 198,
+    "text": "Fail."
+  },
+  {
+    "id": 199,
+    "text": "Learn from your mistakes."
+  },
+  {
+    "id": 200,
+    "text": "Take risks."
+  }
+]
