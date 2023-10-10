@@ -38,10 +38,12 @@
         modifyContainer1();
     });
 
-    function setUpTable() {
+    async function setUpTable() {
+        var usersData = await <%= ToJson(GetUsersAsync()) %>;
         var dt = $('#all-users').DataTable({
             ajax: {
-                url: '/UsersDataTable.ascx/GetUsers',
+                /*                url: '/UsersDataTable.ascx/GetUsers',*/
+                data: usersData,
                 type: 'GET',
                 datatype: 'json',
                 contentType: "application/json; charset-utf-8",
