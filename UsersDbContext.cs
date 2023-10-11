@@ -8,15 +8,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CommonLegacy
 {
-    public class UsersDbContext : Microsoft.EntityFrameworkCore.DbContext
+    public class UsersDbContext : DbContext
     {
-        public UsersDbContext(DbContextOptions<UsersDbContext> options) : base(options)
+        public UsersDbContext() : base("name=con")
         {
         }
 
-        public Microsoft.EntityFrameworkCore.DbSet<User> Users {  get; set; }
+        public DbSet<User> Users {  get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 

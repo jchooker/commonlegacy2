@@ -1,37 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UsersDataTable.ascx.cs" Inherits="CommonLegacy.UsersDataTable" %>
-<table id="all-users" class="display table table-striped table-bordered" style="width:100%"></table>
 
-<%--<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <table>
-        <thead>
-            <tr>
-                <th>Last Name</th>
-                <th>First Name</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Age</th>
-                <th>Country</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="Repeater1" runat="server">
-                <ItemTemplate>
-                    <tr>
-                        <td><%# DataBinder.Eval(Container.DataItem, "LastName") %></td>
-                        <td><%# DataBinder.Eval(Container.DataItem, "FirstName") %></td>
-                        <td><%# DataBinder.Eval(Container.DataItem, "Email") %></td>
-                        <td><%# DataBinder.Eval(Container.DataItem, "Gender") %></td>
-                        <td><%# DataBinder.Eval(Container.DataItem, "Age") %></td>
-                        <td><%# DataBinder.Eval(Container.DataItem, "Country") %></td>
-                    </tr>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <table id="all-users">
     </table>
-</asp:Content>--%>
-<%--^^^^^^^^*****Bard-suggested ascx--%>
 
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
         setUpTable();
         getRowData();
@@ -39,7 +12,9 @@
     });
 
     async function setUpTable() {
-        var usersData = await <%= ToJson(GetUsersAsync()) %>;
+        <%--var usersData = await <%= ToJson(GetUsersAsync()) %>;--%>
+        <%---- = <%= ToJson(SQLiteAccess.GetUsers()) %>;----%>
+        console.log(usersData);
         var dt = $('#all-users').DataTable({
             ajax: {
                 /*                url: '/UsersDataTable.ascx/GetUsers',*/
@@ -89,3 +64,4 @@
         });
     }
 </script>
+</asp:Content>

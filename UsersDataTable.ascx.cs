@@ -1,8 +1,5 @@
-﻿using CommonLegacy.entities;
-using CommonLegacy.Services;
-using Microsoft.Ajax.Utilities;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
+﻿using CommonLegacy;
+using CommonLegacy.entities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,6 +11,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.Entity;
 using Unity;
 
 namespace CommonLegacy
@@ -34,13 +32,22 @@ namespace CommonLegacy
             return userList;
         }
 
-        public string ToJson(Task<List<User>> users)
+        public string ToJson(List<User> users)
         {
             string jsonData = JsonConvert.SerializeObject(users);
             return jsonData;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!IsPostBack)
+            {
+                var usersData = SQLiteAccess.GetUsers();
+                var jsonUsersData = ToJson(usersData);
+                ScriptManager.RegisterStartupScript(this, GetType(), "SetUserData", $"var usersData = {jsonUsersData};", true);
+
+                //string script = $"<script type='text/javascript'>usersData = {jsonUsersData};</script>";
+
+            }
         }
 
 
