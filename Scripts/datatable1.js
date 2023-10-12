@@ -1,5 +1,5 @@
 ﻿$(function () {
-    setUpTable();
+    //setUpTable();
     getRowData();
     modifyContainer1();
 });
@@ -7,7 +7,6 @@
 function setUpTable(data) {
 
     var dt = $('#all-users').DataTable({
-        //serverSide: true,
         data: data,
         //ajax: {
         //    url: 'UsersDataTable.ascx/GetData',

@@ -455,6 +455,7 @@
       <DependentUpon>UsersDataTable.ascx</DependentUpon>
     </Compile>
     <Compile Include="UsersDbContext.cs" />
+    <Compile Include="Util\DapperNameResolution.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
