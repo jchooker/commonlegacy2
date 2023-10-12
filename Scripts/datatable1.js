@@ -8,29 +8,6 @@ function setUpTable(data) {
 
     var dt = $('#all-users').DataTable({
         data: data,
-        //ajax: {
-        //    url: 'UsersDataTable.ascx/GetData',
-        //    type: 'GET',
-        //    datatype: 'json',
-        //    contentType: "application/json",
-        //    data: function (d) {
-        //        return d;
-        //    },
-        //    dataSrc: function (json) {
-        //        json.draw = json.d.draw;
-        //        json.recordsTotal = json.d.recordsFiltered;
-        //        json.data = json.d.data;
-        //        var return_data = json;
-        //        return return_data.data;
-        //    },
-        //    error: function (xhr, status, error) {
-        //        // Handle errors here
-        //        console.error(xhr.responseText);
-
-        //        // Make this error component visible!
-        //        $('#error-message').text('An error occurred: ' + error);
-        //    }
-        //},
         columns: [
             { data: 'LastName', title: 'Last Name' },
             { data: 'FirstName', title: 'First Name' },

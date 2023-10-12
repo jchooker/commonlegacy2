@@ -1,5 +1,4 @@
-﻿
-using CommonLegacy.entities;
+﻿using CommonLegacy.entities;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;

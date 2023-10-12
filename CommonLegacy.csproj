@@ -402,7 +402,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="entities\DataTables.cs" />
     <Compile Include="entities\User.cs" />
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
