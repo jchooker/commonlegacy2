@@ -1,10 +1,10 @@
-﻿$(document).ready(function () {
+﻿$(function () {
     setUpTable();
     getRowData();
     modifyContainer1();
 });
 
-async function setUpTable(data) {
+function setUpTable(data) {
 
     var dt = $('#all-users').DataTable({
         //serverSide: true,
