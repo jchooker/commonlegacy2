@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserManagement.aspx.cs" Inherits="CommonLegacy.UserManagement" %>
-<%@ Register TagPrefix="uc" TagName="UsersDataTable" src="~/UsersDataTable.ascx" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="UserManagement.aspx.cs" Inherits="CommonLegacy.UserManagement" %>
+<%@ Register TagPrefix="uc" TagName="UsersDataTable" Src="UsersDataTable.ascx"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" type="text/css" href="/lib/css/usermgmt.css" />
     <%--<script src="./lib/js/usermgmt.js" language="javascript" type="text/javascript"></script>--%>
@@ -80,7 +80,7 @@
             <div class="col-md-7">
                 <div class="card mt-3">
                     <div class="card-body">
-                        <uc:UsersDataTable id="UserDataTableControl1" runat="server" namespace="commonlegacy"/>
+                        <uc:UsersDataTable id="UserDataTableControl1" runat="server" namespace="CommonLegacy"/>
                     </div>
                 </div>
             </div>

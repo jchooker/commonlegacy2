@@ -13,10 +13,10 @@ namespace CommonLegacy
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Roles.IsUserInRole("Admin"))
-            {
-                HttpContext.Current.Response.Redirect("~/Error.aspx?message=" + Server.UrlEncode("Must be Admin"));
-            }
+            //if (!Roles.IsUserInRole("Admin"))
+            //{
+            //    HttpContext.Current.Response.Redirect("~/Error.aspx?message=" + Server.UrlEncode("Must be Admin"));
+            //} ^ENABLE SOON
         }
     }
 }
