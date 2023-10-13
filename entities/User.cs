@@ -23,5 +23,7 @@ namespace CommonLegacy.entities
         public string SymbolCombination { get; set; }
         public string LatestCreativeMantra { get; set; }
         public string Bio { get; set; }
+        public bool IsModified { get; set; } = false;
+        public bool IsAdmin { get; set; } = false;
     }
 }

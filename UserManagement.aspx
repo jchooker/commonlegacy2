@@ -2,7 +2,7 @@
 <%@ Register TagPrefix="uc" TagName="UsersDataTable" Src="UsersDataTable.ascx"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" type="text/css" href="/lib/css/usermgmt.css" />
-    <%--<script src="./lib/js/usermgmt.js" language="javascript" type="text/javascript"></script>--%>
+    <script src="./Scripts/datatable1.js" language="javascript" type="text/javascript"></script>
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid">
@@ -69,7 +69,7 @@
 
 
                             <div class="d-grid gap-2">
-                                <button class="btn btn-success btn-lg font2 mt-4" type="button">Submit modifications</button>
+                                <button class="btn btn-success btn-lg font2 mt-4" type="button" onclick="modifyUserInit();">Submit Modifications</button>
                                 <button class="btn btn-danger btn-lg font2" type="button">DELETE USER</button>
                                 <button class="btn btn-secondary btn-lg font2" type="button">Cancel</button>
                             </div>

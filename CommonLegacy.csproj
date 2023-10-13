@@ -388,6 +388,7 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -403,6 +404,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="entities\User.cs" />
+    <Compile Include="entities\UserMod.cs" />
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -416,6 +418,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HttpSessionService.cs" />
     <Compile Include="Services\ISessionService.cs" />
+    <Compile Include="Services\IUserRepository.cs" />
     <Compile Include="Services\UnityConfig.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -454,7 +457,6 @@
       <DependentUpon>UsersDataTable.ascx</DependentUpon>
     </Compile>
     <Compile Include="UsersDbContext.cs" />
-    <Compile Include="Util\DapperNameResolution.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -465,6 +467,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Util\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
