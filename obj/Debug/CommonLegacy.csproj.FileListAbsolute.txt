@@ -35,6 +35,7 @@ C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\roslyn\vbc.rsp
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\roslyn\VBCSCompiler.exe
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Antlr3.Runtime.dll
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Dapper.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\EntityFramework.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\EntityFramework.SqlServer.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Microsoft.AspNet.FriendlyUrls.dll
@@ -92,9 +93,9 @@ C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Threading.
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.ValueTuple.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Http.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Optimization.dll
-C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Unity.Microsoft.DependencyInjection.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\WebActivatorEx.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\WebGrease.dll
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Dapper.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\EntityFramework.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\EntityFramework.SqlServer.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Microsoft.AspNetCore.Hosting.Abstractions.xml
@@ -142,11 +143,8 @@ C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Threading.
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.ValueTuple.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Http.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Optimization.xml
-C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Unity.Microsoft.DependencyInjection.pdb
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Antlr3.Runtime.pdb
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegacy.csproj.CopyComplete
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegacy.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegacy.pdb
-C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Dapper.dll
-C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Dapper.xml

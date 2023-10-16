@@ -1,19 +1,33 @@
 ﻿$(function () {
-    //setUpTable();
+    //let dt = setUpTable();
+    setUpTable();
     getRowData();
     modifyContainer1();
+    let currGuy = {
+        Id: 0,
+        FirstName: '',
+        LastName: '',
+        Email: '',
+        Gender: '',
+        Age: '',
+        Country: ''
+    };
 });
 
-let currGuy = {
-    Id: 0,
-    FirstName: '',
-    LastName: ''
-};
 
-function setUpTable(data) {
+function setUpTable() {
+
+    if (DataTable.isDataTable('#all-users')) { //<--clears dt space in certain scenarios
+        $('#all-users').DataTable().destroy();
+    }
 
     var dt = $('#all-users').DataTable({
-        data: data,
+        ajax: {
+            url: '/UsersDataTable.ascx/GetUsers',
+            type: 'GET',
+            dataType: 'json',
+            dataSrc: ''
+        },
         columns: [
             { data: 'LastName', title: 'Last Name' },
             { data: 'FirstName', title: 'First Name' },
@@ -24,6 +38,8 @@ function setUpTable(data) {
         ],
         select: 'single'
     });
+
+    //return dt;
 }
 
 function getRowData() {
@@ -35,9 +51,13 @@ function getRowData() {
         $('#first-name-mod').val(currGuy['FirstName']);
         $('#last-name-mod').val(currGuy['LastName']);
         $('#email-mod').val(table.row(this).data()['Email']);
+        currGuy['Email'] = table.row(this).data()['Email'];
         $('#gender-mod').val(table.row(this).data()['Gender']);
+        currGuy['Gender'] = table.row(this).data()['Gender'];
         $('#age-mod').val((table.row(this).data()['Age']).toString());
+        currGuy['Age'] = table.row(this).data()['Age'].toString();
         $('#country-mod').val(table.row(this).data()['Country']);
+        currGuy['Country'] = table.row(this).data()['Country'];
     })
 }
 
@@ -62,7 +82,9 @@ function modifyUserInit() {
                 'Modification Complete',
                 "User " + currGuy['FirstName'] + " " + currGuy['LastName'] + " changed!",
                 'success'
-            )
+            );
+            $('#all-users').DataTable().ajax.reload(); //<-hoping to make this refresh the table after modifications-
+            //will need to apply to delete as well
         }
     }); //<--now button press on this modal should commence the rest of modifyUser fxn
    
@@ -87,7 +109,7 @@ function modifyUserCommit() {
 
     $.ajax({
         type: "POST",
-        url: "UsersDataTable.ascx/ModifyUser",
+        url: "UsersDataTable.ascx/Modify_Commit",
         data: JSON.stringify(modifiedUser),
         contentType: "application/json; charset=utf-8",
         dataType: "JSON",

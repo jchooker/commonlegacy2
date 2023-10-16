@@ -238,9 +238,6 @@
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Microsoft.DependencyInjection, Version=5.11.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>packages\Unity.Microsoft.DependencyInjection.5.11.5\lib\netstandard2.0\Unity.Microsoft.DependencyInjection.dll</HintPath>
-    </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
@@ -388,7 +385,6 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -419,7 +415,8 @@
     <Compile Include="Services\HttpSessionService.cs" />
     <Compile Include="Services\ISessionService.cs" />
     <Compile Include="Services\IUserRepository.cs" />
-    <Compile Include="Services\UnityConfig.cs" />
+    <Compile Include="Services\ServiceLocator.cs" />
+    <Compile Include="Services\UserRepository.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -456,7 +453,6 @@
     <Compile Include="UsersDataTable.ascx.designer.cs">
       <DependentUpon>UsersDataTable.ascx</DependentUpon>
     </Compile>
-    <Compile Include="UsersDbContext.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

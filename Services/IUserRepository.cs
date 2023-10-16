@@ -10,6 +10,6 @@ namespace CommonLegacy.Services
     public interface IUserRepository
     {
         void ModifyUser(UserMod userMod);
-        List<User> GetAllUsers();
+        IEnumerable<User> GetAllUsers();
     }
 }

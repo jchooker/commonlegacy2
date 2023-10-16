@@ -2,85 +2,67 @@
 using CommonLegacy.Services;
 using Dapper;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SQLite;
-using System.Linq;
-using System.Web.Script.Serialization;
-using System.Web.Script.Services;
+using Newtonsoft.Json;
 using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Web.Script.Services;
+using System.Collections.Generic;
+using System.Data.SQLite;
+using System.Configuration;
 
 namespace CommonLegacy
 {
     public partial class UsersDataTable : System.Web.UI.UserControl
     {
         private static string cs = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-        private readonly IUserRepository iUserRepository;
+        //private IUserRepository iUserRepository;
 
-        public UsersDataTable(IUserRepository iUserRepository)
-        {
-            this.iUserRepository = iUserRepository;
-        }
+        //public UsersDataTable(IUserRepository userRepository)
+        //{
+        //    iUserRepository = userRepository;
+        //}
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                string jsonData = GetAllUsers();
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "initDataTable", "setUpTable(" + jsonData + ");", true);
-            }
-        }
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet =true)]
-        public string GetAllUsers()
-        {
-            IUserRepository userRepository = new UserRepository();
-            //using (IDbConnection dbConnection = new SQLiteConnection(cs)) 
+            //if (!IsPostBack)
             //{
-            //dbConnection.Open();
-            //Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
-            //List<User> userList = dbConnection.Query<User>("SELECT * FROM users").ToList();
-
-            //JavaScriptSerializer serializer = new JavaScriptSerializer();
-            //string jsonData = serializer.Serialize(userList);
-
-            //dbConnection.Close();
-
-            //    return jsonData;
+                //var usersDataTable = (UsersDataTable)Page.FindControl("UsersDataTable");
+                //var users = usersDataTable.iUserRepository.GetAllUsers();
+                //var users = iUserRepository.GetAllUsers();
+                //using (IDbConnection connection = ConnectionHelper.CreateConnection())
+                //iUserRepository = new UserRepository();
+                //string jsonData = GetAllUsers();
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "initDataTable", "setUpTable(" + jsonData + ");", true);
             //}
-            return "";
         }
         [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
-        public User GetUserById(int userId = 1)
-        {
-            using (IDbConnection dbConnection = new SQLiteConnection(cs))
-            {
-                dbConnection.Open();
-                Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
-                User testUser = dbConnection.QuerySingleOrDefault<User>("SELECT * FROM Users WHERE Id = @UserId", new { UserId = userId });
-                dbConnection.Close();
-                return testUser;
-            }
-        }        
-        
-        [WebMethod]
-        //[WebMethod(EnableSession = true)] <--may be required later if sessions are used
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
-        public void ModifyUser(UserMod userMod)
+        protected void Modify_Commit(string jsUser)
         {
-            UserRepository userRep = new UserRepository();
-            //using (IDbConnection dbConnection = new SQLiteConnection(cs))
+            IUserRepository userRepository = Application["UserRepository"] as IUserRepository;
+            UserMod userMod = JsonConvert.DeserializeObject<UserMod>(jsUser);
+            userRepository?.ModifyUser(userMod); //<-should be equiv of statement below:
+            //if (userRepository != null)
             //{
-                //dbConnection.Open();
-                //Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
-                //User testUser = dbConnection.QuerySingleOrDefault<User>("SELECT * FROM Users WHERE Id = @UserId", new { UserId = userId });
-                //dbConnection.Close();
-                //return testUser;
-            //    return new User();
+            //    userRepository.ModifyUser(userMod);
             //}
+            //UserMod userMod = new UserMod()
+            //{
+            //    Id = userMod.Id,
+            //    FirstName = userMod.FirstName,
+            //    LastName = userMod.LastName,
+            //    Email = userMod.Email,
+            //    Gender = userMod.Gender,
+            //    Age = userMod.Age,
+            //    Country = userMod.Country
+            //};
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
+        protected static IEnumerable<User> GetUsers()
+        {
+            IUserRepository userAccess = new UserRepository();
+            return userAccess.GetAllUsers();
         }
     }
 }
