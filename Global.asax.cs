@@ -1,6 +1,4 @@
 ﻿using CommonLegacy.Services;
-using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Unity;
 using System;
 using System.ComponentModel;
 using System.Data;

@@ -8,6 +8,7 @@ using Dapper;
 using System.Data.SQLite;
 using System.Configuration;
 using System.Web.Script.Services;
+using System.Web.Script.Serialization;
 
 namespace CommonLegacy.Services
 {
@@ -15,8 +16,8 @@ namespace CommonLegacy.Services
     {
         private static string cs = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
-        [System.Web.Services.WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet =true)]
+        //[System.Web.Services.WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
         public IEnumerable<User> GetAllUsers()
         {
             using (IDbConnection dbConn = new SQLiteConnection(cs))
@@ -24,6 +25,8 @@ namespace CommonLegacy.Services
                 dbConn.Open();
                 Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
                 IEnumerable<User> userList = dbConn.Query<User>("SELECT * FROM users").ToList();
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                string jsonData = serializer.Serialize(userList);
                 dbConn.Close();
                 return userList;
             }
