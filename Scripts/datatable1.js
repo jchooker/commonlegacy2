@@ -12,10 +12,6 @@ $(function () {
     setUpTable(usersData);
     getRowData();
     modifyContainer1();
-
-    console.log("only run 1?");
-
-    console.log("only run 2?");
 });
 
 
@@ -86,7 +82,17 @@ function modifyUserInit() {
         SwalTitle: 'Modify User Confirmation',
         SwalType: 'warning'
     };
-    fireSweety(modSweet).then((res) => {
+    Swal.fire({
+        title: modSweet["SwalTitle"],
+        text: 'Do you wish to commit to these changes to ' + currGuy["FirstName"] + ' ' + currGuy["LastName"] + '?' + ' They will be permanent!', //<--pass unmod-ed user f & l name
+        icon: modSweet["SwalType"],
+        showCloseButton: true,
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirm modification'
+    })
+        .then((res) => {
         if (res.isConfirmed) {
             modifyUserCommit();
             Swal.fire(
@@ -120,10 +126,10 @@ function modifyUserCommit() {
 
     $.ajax({
         type: "POST",
-        url: "UsersDataTable.ascx/Modify_Commit",
+        url: "ModifyUser.asmx/Modify_Commit",
         data: JSON.stringify(modifiedUser),
         contentType: "application/json; charset=utf-8",
-        dataType: "JSON",
+        dataType: "json",
         success: console.log("success"), //<--bind to sweet alerts or toast
         error: console.log("failure")
     });

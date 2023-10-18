@@ -27,14 +27,15 @@ namespace CommonLegacy
                 Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "initDataTable", script, true);
             }
         }
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
-        public void Modify_Commit(string jsUser)
-        {
-            IUserRepository userRepository = Application["UserRepository"] as IUserRepository;
-            UserMod userMod = JsonConvert.DeserializeObject<UserMod>(jsUser);
-            userRepository?.ModifyUser(userMod); //<-should be equiv of statement below:
-        }
+        //[WebMethod]
+        //[ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
+        //public void Modify_Commit(string jsUser)
+        //{
+        //    //this is where UserMod comes into play - to modify
+        //    IUserRepository userRepository = Application["UserRepository"] as IUserRepository;
+        //    UserMod userMod = JsonConvert.DeserializeObject<UserMod>(jsUser);
+        //    userRepository?.ModifyUser(userMod); //<-should be equiv of statement below:
+        //}
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
