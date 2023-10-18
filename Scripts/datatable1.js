@@ -10,11 +10,11 @@
 $(function () {
     //let dt = setUpTable();
     setUpTable(usersData);
-        //.then(function () {
-        //    modifyContainer1();
-        //});
+    getRowData();
+    modifyContainer1();
+
     console.log("only run 1?");
-    //getRowData();
+
     console.log("only run 2?");
 });
 
@@ -43,86 +43,18 @@ function setUpTable(usersData) {
                 console.log("Error", err.name);
                 console.log("Error", err.message);
             },
-            initComplete: function () {
+            initComplete: function () { //<-remove if it's not working with getrowdata?
                 console.log("dt setup complete");
-                getRowData(dt);
             },
         });
 
     } else {
         console.log("user data not available");
     }
-    //$.ajax({
-    //    url: "/UsersDataTable.ascx/GetUsers",
-    //    method: 'GET',
-    //    dataType: 'json',
-    //    contentType: "application/json; charset=utf-8",
-    //    dataSrc: "",
-    //    success: function (data) {
-    //        dt = $("#all-users").DataTable({
-    //            serverSide: true,
-    //            data: data,
-    //            columns: [
-    //                { data: 'LastName', title: 'Last Name' },
-    //                { data: 'FirstName', title: 'First Name' },
-    //                { data: 'Email', title: 'Email' },
-    //                { data: 'Gender', title: 'Gender' },
-    //                { data: 'Age', title: 'Age' },
-    //                { data: 'Country', title: 'Country' },
-    //            ],
-    //            select: 'single',
-    //            error: function (err) {
-    //                alert("DataTables ERROR #2: " + err);
-    //                console.log("DataTables ERROR #2");
-    //                console.log("Error", err.stack);
-    //                console.log("Error", err.name);
-    //                console.log("Error", err.message);
-    //            },
-    //            initComplete: function () {
-    //                console.log("dt setup complete");
-    //                getRowData(dt);
-    //            },
-    //        });
-    //    },
-    //    error: function (err) {
-    //        alert("DataTables ERROR #1: " + err);
-    //        console.log("DataTables ERROR #1");
-    //        console.log("Error", err.stack);
-    //        console.log("Error", err.name);
-    //        console.log("Error", err.message);
-    //    },
-    //})
-
-    //var dt = $("#all-users").DataTable({
-    //    ajax: {
-    //        url: "UsersDataTable.ascx/GetUsers",
-    //        crossDomain: true,
-    //        type: "GET",
-    //        dataType: "json",
-    //        contentType: "application/json; charset=utf-8",
-    //        dataSrc: "",
-    //    },
-    //    columns: [
-    //        { data: 'LastName', title: 'Last Name' },
-    //        { data: 'FirstName', title: 'First Name' },
-    //        { data: 'Email', title: 'Email' },
-    //        { data: 'Gender', title: 'Gender' },
-    //        { data: 'Age', title: 'Age' },
-    //        { data: 'Country', title: 'Country' },
-    //    ],
-    //    select: 'single',
-    //    initComplete: function () {
-    //        console.log("dt setup complete");
-    //        getRowData(dt);
-    //    }
-    //});
-
-
-    //return dt;
 }
 
-function getRowData(table) {
-    //var table = $('#all-users').DataTable();
+function getRowData() {
+    var table = $('#all-users').DataTable();
     $('#all-users tbody').on('click', 'tr', function () {
         currGuy['Id'] = table.row(this).data()['Id'];
         currGuy['FirstName'] = table.row(this).data()['FirstName'];

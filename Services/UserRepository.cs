@@ -1,6 +1,4 @@
 ﻿using CommonLegacy.entities;
-using CommonLegacy.Services;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -16,7 +14,6 @@ namespace CommonLegacy.Services
     {
         private static string cs = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
-        //[System.Web.Services.WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
         public IEnumerable<User> GetAllUsers()
         {

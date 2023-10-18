@@ -19,27 +19,9 @@ namespace CommonLegacy
 
             IUserRepository userRepository = new UserRepository();
             Application["UserRepository"] = userRepository;
-            //var container = new UnityContainer();
-            //var container = new UnityContainer();
-            //var container = new UnityContainer();
-            //container.RegisterType<UsersDbContext>();
-            // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //var dbContext = container.Resolve<UsersDbContext>();
-
-//var userControl = new UsersDataTable(dbContext);
-//HttpContext.Current.Items["DbContext"] = dbContext;
-//Application["UnityContainer"] = container;
-//***********INCLUDE BELOW?
-//var container = new UnityContainer();
-//container.RegisterType<IUserRepository, UserRepository>(
-//    new InjectionFactory(c => new UserRepository(ConnectionHelper.CreateConnection()))
-//);
-//IUnityContainer container = UnityConfig.InitializeContainer();
-
-            // Register the Unity container with ConnectionHelper
         }
     }
 }

@@ -11,15 +11,6 @@ namespace CommonLegacy
 {
     public class SQLiteAccess
     {
-        //public static List<User> GetUsers() 
-        //{ 
-        //    using(IDbConnection con=new SQLiteConnection(LoadConnectionString())) 
-        //    {
-        //        var res = con.Query<User>("SELECT * FROM users", new DynamicParameters());
-        //        return res.ToList();
-        //    } 
-        //}
-
         public static string LoadConnectionString(string id="con")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
