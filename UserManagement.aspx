@@ -70,7 +70,7 @@
 
                             <div class="d-grid gap-2">
                                 <button class="btn btn-success btn-lg font2 mt-4" type="button" onclick="modifyUserInit();">Submit Modifications</button>
-                                <button class="btn btn-danger btn-lg font2" type="button">DELETE USER</button>
+                                <button class="btn btn-danger btn-lg font2" type="button" onclick="deleteUserInit()">DELETE USER</button>
                                 <button class="btn btn-secondary btn-lg font2" type="button">Cancel</button>
                             </div>
                         </div>

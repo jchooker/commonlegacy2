@@ -1,9 +1,5 @@
 ﻿using CommonLegacy.entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommonLegacy.Services
 {
@@ -11,5 +7,6 @@ namespace CommonLegacy.Services
     {
         void ModifyUser(UserMod userMod);
         IEnumerable<User> GetAllUsers();
+        void DeleteUser(int userId);
     }
 }

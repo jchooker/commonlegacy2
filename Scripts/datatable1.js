@@ -77,7 +77,9 @@ function modifyContainer1() {
     });
 }
 
-function modifyUserInit() {
+function modifyUserInit() { //message for whether no modifications were made
+                            //custom message to lay out some changes that were made
+                            //figure out how to reload dt dynamically without error
     var modSweet = {
         SwalTitle: 'Modify User Confirmation',
         SwalType: 'warning'
@@ -127,23 +129,64 @@ function modifyUserCommit() {
     $.ajax({
         type: "POST",
         url: "ModifyUser.asmx/Modify_Commit",
-        data: JSON.stringify(modifiedUser),
+        data: JSON.stringify({ jsUser: modifiedUser }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: console.log("success"), //<--bind to sweet alerts or toast
-        error: console.log("failure")
+        error: function (xhr, status, error) {
+            console.log("Status: " + status);
+            console.log("Response: " + xhr.responseText);
+            console.log("Error: " + error);
+        }
     });
 }
 
-function fireSweety(type) { //<--'type' becomes obj with swal vals?
+function deleteUserInit() {
+    var modSweet = {
+        SwalTitle: 'Delete User Confirmation',
+        SwalType: 'warning'
+    };
     Swal.fire({
-        title: type["SwalTitle"],
-        text: 'Do you wish to commit to these changes to ' + currGuy["FirstName"] + ' ' + currGuy["LastName"] + '?' + ' They will be permanent!', //<--pass unmod-ed user f & l name
-        icon: type["SwalType"],
+        title: modSweet["SwalTitle"],
+        text: 'Do you wish to delete User ' + currGuy["FirstName"] + ' ' + currGuy["LastName"] + '?' + ' This cannot be undone!', //<--pass unmod-ed user f & l name
+        icon: modSweet["SwalType"],
+        background: '#fff url(https://i.ibb.co/bBPkzxm/floppy-disks.jpg)',
         showCloseButton: true,
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Confirm modification'
+        confirmButtonText: 'Permanently Delete'
+    })
+        .then((res) => {
+            if (res.isConfirmed) {
+                deleteUserCommit();
+                Swal.fire(
+                    'Deletion Complete',
+                    "User " + currGuy['FirstName'] + " " + currGuy['LastName'] + " has been deleted!",
+                    'success'
+                );
+                //$('#all-users').DataTable().ajax.reload(); //<-hoping to make this refresh the table after modifications-
+                //will need to apply to delete as well
+            }
+        }); //<--now button press on this modal should commence the rest of modifyUser fxn
+
+}
+
+function deleteUserCommit() {
+    var userId = {
+        "Id": currGuy["Id"]
+    };
+    $.ajax({
+        type: "DELETE",
+        url: "DeleteUser.asmx/Delete_Commit",
+        data: currGuy["Id"],
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: console.log("success"), //<--bind to sweet alerts or toast
+        error: function (xhr, status, error) {
+            console.log("Status: " + status);
+            console.log("Response: " + xhr.responseText);
+            console.log("Error: " + error);
+        }
     });
 }

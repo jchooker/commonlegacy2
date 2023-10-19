@@ -1,14 +1,10 @@
 ﻿using CommonLegacy.entities;
 using CommonLegacy.Services;
-using Dapper;
 using System;
-using System.Data;
 using Newtonsoft.Json;
 using System.Web.Services;
 using System.Web.Script.Services;
 using System.Collections.Generic;
-using System.Data.SQLite;
-using System.Configuration;
 using System.Web.UI;
 
 namespace CommonLegacy
