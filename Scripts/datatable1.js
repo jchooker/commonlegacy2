@@ -7,6 +7,18 @@
     Age: "",
     Country: ""
 };
+
+const columns = [ //set it here so we can get col idx
+    { data: 'LastName', title: 'Last Name', name: 'LastName' },
+    { data: 'FirstName', title: 'First Name', name: 'FirstName' },
+    { data: 'Email', title: 'Email', name: 'Email' },
+    { data: 'Gender', title: 'Gender', name: 'Gender' },
+    { data: 'Age', title: 'Age', name: 'Age' },
+    { data: 'Country', title: 'Country', name: 'Country' },
+]
+
+var currSelRow; //<--working with this to modify dt
+
 $(function () {
     //let dt = setUpTable();
     setUpTable(usersData);
@@ -23,14 +35,7 @@ function setUpTable(usersData) {
     if (usersData) {
         var dt = $("#all-users").DataTable({
             data: usersData,
-            columns: [
-                { data: 'LastName', title: 'Last Name' },
-                { data: 'FirstName', title: 'First Name' },
-                { data: 'Email', title: 'Email' },
-                { data: 'Gender', title: 'Gender' },
-                { data: 'Age', title: 'Age' },
-                { data: 'Country', title: 'Country' },
-            ],
+            columns: columns,
             select: 'single',
             error: function (err) {
                 alert("DataTables ERROR: " + err);
@@ -65,6 +70,7 @@ function getRowData() {
         currGuy['Age'] = table.row(this).data()['Age'].toString();
         $('#country-mod').val(table.row(this).data()['Country']);
         currGuy['Country'] = table.row(this).data()['Country'];
+        console.log(table.row(this));
     });
 }
 
@@ -88,6 +94,7 @@ function modifyUserInit() { //message for whether no modifications were made
         title: modSweet["SwalTitle"],
         text: 'Do you wish to commit to these changes to ' + currGuy["FirstName"] + ' ' + currGuy["LastName"] + '?' + ' They will be permanent!', //<--pass unmod-ed user f & l name
         icon: modSweet["SwalType"],
+        //background: '#fff url(https://i.ibb.co/QHby8bp/floppy-disks-edit.png)',
         showCloseButton: true,
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -125,20 +132,39 @@ function modifyUserCommit() {
         Age: age,
         Country: cn
     };
+    const modCheck = objComparison(currGuy, modifiedUser);
+    if (modCheck.length === 1) { //poss return value of "[true]" OR "[false]"?
+        Swal.fire({
+            icon: 'error',
+            title: 'What a world!',
+            text: "You-sir error - literally you didn't modify anything...",
+            footer: "#dobetter"
+        });
+    } else { //HOW TO GET ROW CLICKED + COLUMN CHANGED?
+        $.ajax({ //this sees one change and runs a POST on the full row - could be more efficient? unless patching would
+            type: "POST", //take longer; the only discriminating part is the dt selective cell data adjustment
+            url: "ModifyUser.asmx/Modify_Commit",
+            data: JSON.stringify({ jsUser: modifiedUser }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: () => {
+                var dt = $('#all-users').DataTable();
+                var colIndices = [];
+                for (var i = 1; i < modCheck.length; i++) {
+                    //column().name() getter setter column
+                    var currCol = dt.column(modCheck[i] + ':name').data();
 
-    $.ajax({
-        type: "POST",
-        url: "ModifyUser.asmx/Modify_Commit",
-        data: JSON.stringify({ jsUser: modifiedUser }),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: console.log("success"), //<--bind to sweet alerts or toast
-        error: function (xhr, status, error) {
-            console.log("Status: " + status);
-            console.log("Response: " + xhr.responseText);
-            console.log("Error: " + error);
-        }
-    });
+                }
+                colIndices = getColIndicesByName(dt);
+                console.log("success");//<--bind to sweet alerts or toast
+            },
+            error: function (xhr, status, error) {
+                console.log("Status: " + status);
+                console.log("Response: " + xhr.responseText);
+                console.log("Error: " + error);
+            }
+        });
+    }
 }
 
 function deleteUserInit() {
@@ -150,7 +176,7 @@ function deleteUserInit() {
         title: modSweet["SwalTitle"],
         text: 'Do you wish to delete User ' + currGuy["FirstName"] + ' ' + currGuy["LastName"] + '?' + ' This cannot be undone!', //<--pass unmod-ed user f & l name
         icon: modSweet["SwalType"],
-        background: '#fff url(https://i.ibb.co/bBPkzxm/floppy-disks.jpg)',
+        //background: '#fff url(https://i.ibb.co/QHby8bp/floppy-disks-edit.png)',
         showCloseButton: true,
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -182,11 +208,39 @@ function deleteUserCommit() {
         data: currGuy["Id"],
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: console.log("success"), //<--bind to sweet alerts or toast
+        success: () => {
+            var table = $('#all-users').DataTable();
+            table.row($(this).parents('tr'))
+                .remove()
+                .draw();
+            console.log("success"); //<--bind to sweet alerts or toast
+        },
         error: function (xhr, status, error) {
             console.log("Status: " + status);
             console.log("Response: " + xhr.responseText);
             console.log("Error: " + error);
         }
     });
+}
+
+function objComparison(obj1, obj2) {
+    const keys1 = Object.keys(obj1);
+    var changes = [false];
+
+    if (keys1.length !== keys2.length) {
+        return [false];
+    }
+
+    for (let key of keys1) {
+        if (obj1[key] !== obj2[key]) {
+            changes.push(obj1);
+        }
+    }
+    if (changes.length > 1) return changes;
+    else return [true];
+}
+
+function getColIndicesByName(dTable, nameList) {
+    var maxIdx = dTable.columns().count() - 1;
+    var 
 }
