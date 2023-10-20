@@ -70,7 +70,7 @@ function getRowData() {
         currGuy['Age'] = table.row(this).data()['Age'].toString();
         $('#country-mod').val(table.row(this).data()['Country']);
         currGuy['Country'] = table.row(this).data()['Country'];
-        console.log(table.row(this));
+        currSelRow = table.row(this).index();
     });
 }
 
@@ -152,10 +152,17 @@ function modifyUserCommit() {
                 var colIndices = [];
                 for (var i = 1; i < modCheck.length; i++) {
                     //column().name() getter setter column
-                    var currCol = dt.column(modCheck[i] + ':name').data();
-
-                }
-                colIndices = getColIndicesByName(dt);
+                    //var currCol = dt.column(modCheck[i] + ':name').data();
+                    let colIndex = dt
+                        .columns()
+                        .header()
+                        .map(c => $(c).text())
+                        .indexOf(modCheck[i]);
+                    dt.cell(currSelRow, colIndex)
+                        .data(modifiedUser[modCheck[i]])
+                        .draw(false); //not modifiedUser[modCheck][i] because the index
+                }                                                           //is the value of the modCheck at index i?? correct language?
+                //colIndices = getColIndicesByName(dt);
                 console.log("success");//<--bind to sweet alerts or toast
             },
             error: function (xhr, status, error) {
@@ -225,6 +232,7 @@ function deleteUserCommit() {
 
 function objComparison(obj1, obj2) {
     const keys1 = Object.keys(obj1);
+    const keys2 = Object.keys(obj2);
     var changes = [false];
 
     if (keys1.length !== keys2.length) {
@@ -233,14 +241,14 @@ function objComparison(obj1, obj2) {
 
     for (let key of keys1) {
         if (obj1[key] !== obj2[key]) {
-            changes.push(obj1);
+            changes.push(key);
         }
     }
     if (changes.length > 1) return changes;
     else return [true];
 }
 
-function getColIndicesByName(dTable, nameList) {
-    var maxIdx = dTable.columns().count() - 1;
-    var 
-}
+//function getColIndicesByName(dTable, nameList) {
+//    var maxIdx = dTable.columns().count() - 1;
+//    var 
+//}
