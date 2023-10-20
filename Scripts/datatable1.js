@@ -23,10 +23,13 @@ $(function () {
     //let dt = setUpTable();
     setUpTable(usersData);
     getRowData();
+    loadCountryOptions();
     modifyContainer1();
 });
 
-
+///////////////////////////////TO ADD: CORRECT HANDLING OF COUNTRY CHANGE - STILL GETTING THE "YOU DIDN'T CHANGE ANYTHING MESSAGE", FOR ONE THING
+//////////////////THE INDEXOF FORMULA FROM DT IS CORRECT, BUT IT USES THE DISPLAY NAME (WITH THE SPACE) - THE -1 THAT IT RETURNS OTHERWISE IS LAST IDX
+//////PERHAPS YOU CAN MOD THE ONE FORMULA TO GET DISPLAY NAME INSTEAD OF THE NAME NAME
 function setUpTable(usersData) {
 
     //if (DataTable.isDataTable('#all-users')) { //<--clears dt space in certain scenarios
@@ -68,9 +71,17 @@ function getRowData() {
         currGuy['Gender'] = table.row(this).data()['Gender'];
         $('#age-mod').val((table.row(this).data()['Age']).toString());
         currGuy['Age'] = table.row(this).data()['Age'].toString();
-        $('#country-mod').val(table.row(this).data()['Country']);
+        //$('#country-mod').val(table.row(this).data()['Country']);
         currGuy['Country'] = table.row(this).data()['Country'];
+        changeWhichCountrySelected();
+        //loadCountrySelect();
         currSelRow = table.row(this).index();
+        console.log(table
+            .columns()
+            .header()
+            .map(c => $(c).text())
+            .indexOf("First Name"));
+        //alert(currSelRow);
     });
 }
 
@@ -104,13 +115,6 @@ function modifyUserInit() { //message for whether no modifications were made
         .then((res) => {
         if (res.isConfirmed) {
             modifyUserCommit();
-            Swal.fire(
-                'Modification Complete',
-                "User " + currGuy['FirstName'] + " " + currGuy['LastName'] + " changed!",
-                'success'
-            );
-            //$('#all-users').DataTable().ajax.reload(); //<-hoping to make this refresh the table after modifications-
-            //will need to apply to delete as well
         }
     }); //<--now button press on this modal should commence the rest of modifyUser fxn
    
@@ -122,7 +126,10 @@ function modifyUserCommit() {
     let em = $('#email-mod').val();
     let gn = $('#gender-mod').val();
     let age = $('#age-mod').val();
-    let cn = $('#country-mod').val();
+    let cn;
+    //if ($('#country-mod option:selected').attr('value') === 0) cn = currGuy["Country"]; //does this clash with the initiation or nature of a select element?
+    //else cn = $('#country-mod').val();
+    cn = ($('#country-mod option:selected').attr('value') === 0) ? currGuy["Country"] : $('#country-mod').val(); //ternary works with mixed in jQ?
     let modifiedUser = {
         Id: currGuy['Id'],
         FirstName: fn,
@@ -132,7 +139,7 @@ function modifyUserCommit() {
         Age: age,
         Country: cn
     };
-    const modCheck = objComparison(currGuy, modifiedUser);
+    var modCheck = objComparison(currGuy, modifiedUser);
     if (modCheck.length === 1) { //poss return value of "[true]" OR "[false]"?
         Swal.fire({
             icon: 'error',
@@ -149,20 +156,29 @@ function modifyUserCommit() {
             dataType: "json",
             success: () => {
                 var dt = $('#all-users').DataTable();
-                var colIndices = [];
+                //dt.columns.adjust().draw(false);
+                //var colIndices = [];
                 for (var i = 1; i < modCheck.length; i++) {
                     //column().name() getter setter column
                     //var currCol = dt.column(modCheck[i] + ':name').data();
+                    console.log(modCheck[i]); //<--it is collecting the right column names, don't know why it's applying stuff to the wrong cells
                     let colIndex = dt
                         .columns()
                         .header()
                         .map(c => $(c).text())
                         .indexOf(modCheck[i]);
+                    console.log(colIndex);
                     dt.cell(currSelRow, colIndex)
-                        .data(modifiedUser[modCheck[i]])
+                        .data(modifiedUser[modCheck[i]]); //10.20.2023 - somehow the country is being changed to the last name mod
+                    dt.row(currSelRow)
                         .draw(false); //not modifiedUser[modCheck][i] because the index
                 }                                                           //is the value of the modCheck at index i?? correct language?
                 //colIndices = getColIndicesByName(dt);
+                Swal.fire( //this only needs to happen if an actual mod occurs
+                    'Modification Complete',
+                    "User " + currGuy['FirstName'] + " " + currGuy['LastName'] + " changed!",
+                    'success'
+                );
                 console.log("success");//<--bind to sweet alerts or toast
             },
             error: function (xhr, status, error) {
@@ -198,17 +214,12 @@ function deleteUserInit() {
                     "User " + currGuy['FirstName'] + " " + currGuy['LastName'] + " has been deleted!",
                     'success'
                 );
-                //$('#all-users').DataTable().ajax.reload(); //<-hoping to make this refresh the table after modifications-
-                //will need to apply to delete as well
             }
         }); //<--now button press on this modal should commence the rest of modifyUser fxn
 
 }
 
 function deleteUserCommit() {
-    var userId = {
-        "Id": currGuy["Id"]
-    };
     $.ajax({
         type: "DELETE",
         url: "DeleteUser.asmx/Delete_Commit",
@@ -250,5 +261,44 @@ function objComparison(obj1, obj2) {
 
 //function getColIndicesByName(dTable, nameList) {
 //    var maxIdx = dTable.columns().count() - 1;
-//    var 
+//    var
 //}
+function loadCountryOptions() {
+    var sel = $('#country-mod');
+    var firstFew = 0;
+    $.getJSON('./json/countries.json', function (data) {
+        $.each(data, function (idx, country) {
+            if (firstFew < 5) console.log(country.Code + " " + country.Name);
+            var currOption = $('<option value="' + country.Code + '">' + country.Name + '</option>');
+            sel.append(currOption);
+            firstFew++;
+        })
+    });
+}
+
+function changeWhichCountrySelected() { //remove 'select' attr then assign it to correct option
+    var sel = '#country-mod';
+    $(sel + ' option:selected').removeAttr('selected'); //<--resets selected with first click and every additional one
+    $(sel + 'option[value=0]').attr('selected', 'selected'); //sets to 'Select country' option in case neither of the conditions are met;
+                                        //this could be done as an "else", but that could involve switching back and forth b/w options
+    $(sel + ' option').each(function (idx, country) { //check for exact match & "contains" match have to happen separately
+        //var regText = '^' + country.text;
+        const regex = new RegExp("(?<!.)" + currGuy["Country"], "g"); //check needs to be getting country names from json data that is populating dt
+        if (country.text.match(regex)) {
+            $(sel + ' option:selected').removeAttr('selected');
+            $(this).attr('selected', 'selected'); //"China" issue: confirm what '$(this)' is -- UPDATE: IT WAS the next $.each overwriting the "China" result
+            console.log('1st condition: ' + country.text); //*****AND 'Russian Federation' works with 'Russia' because I only have look AHEADS*/
+            return false; //<--
+        }
+        else if (country.text.includes(currGuy['Country'])) {
+            $(sel + ' option:selected').removeAttr('selected');
+            $(this).attr('selected', 'selected');
+            console.log('2nd condition: ' + country.text);
+            return false;
+        }
+    });
+    //$(sel + ' option').each(function (idx, country) {
+    //    if (country.text.includes( currGuy['Country'] )) $(this).attr('selected', 'selected');
+    //});
+
+}

@@ -61,7 +61,9 @@
                                             <label class="col-form-label" for="country-mod">Country: &nbsp;</label>
                                         </div>
                                         <div class="col-4">
-                                            <input id="country-mod" name="country-mod" class="form-control font3" />
+                                            <select id="country-mod" name="country-mod" class="form-select font3">
+                                                <option value=0>Select a country</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +73,6 @@
                             <div class="d-grid gap-2">
                                 <button class="btn btn-success btn-lg font2 mt-4" type="button" onclick="modifyUserInit();">Submit Modifications</button>
                                 <button class="btn btn-danger btn-lg font2" type="button" onclick="deleteUserInit()">DELETE USER</button>
-                                <button class="btn btn-secondary btn-lg font2" type="button">Cancel</button>
                             </div>
                         </div>
                     </div>
