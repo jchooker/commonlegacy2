@@ -8,8 +8,10 @@
     Country: ""
 };
 
+/////***COUNTRY MODS WILL DYNAMICALLY UPDATE, BUT NONE OTHERS WILL!!! CURIOUS!!! 10.23.2023 - AFTER ABANDONMENT OF ASMX APPROACH*/
+
 const columns = [ //set it here so we can get col idx
-    { data: 'LastName', title: 'Last Name', name: 'LastName' },
+    { data: 'LastName', title: 'Last Name', name: 'LastName' }, //<--only "[First][Space][Name]" refs
     { data: 'FirstName', title: 'First Name', name: 'FirstName' },
     { data: 'Email', title: 'Email', name: 'Email' },
     { data: 'Gender', title: 'Gender', name: 'Gender' },
@@ -21,7 +23,8 @@ var currSelRow; //<--working with this to modify dt
 
 $(function () {
     //let dt = setUpTable();
-    setUpTable(usersData);
+    //setUpTable(usersData); <--version from ascx.cs file, may need to return to this
+    setUpTable();
     getRowData();
     loadCountryOptions();
     modifyContainer1();
@@ -33,7 +36,8 @@ $(function () {
 ///////////////////////////////TO ADD: CORRECT HANDLING OF COUNTRY CHANGE - STILL GETTING THE "YOU DIDN'T CHANGE ANYTHING MESSAGE", FOR ONE THING
 //////////////////THE INDEXOF FORMULA FROM DT IS CORRECT, BUT IT USES THE DISPLAY NAME (WITH THE SPACE) - THE -1 THAT IT RETURNS OTHERWISE IS LAST IDX
 //////PERHAPS YOU CAN MOD THE ONE FORMULA TO GET DISPLAY NAME INSTEAD OF THE NAME NAME
-function setUpTable(usersData) {
+//function setUpTable(usersData) {
+function setUpTable() {
 
     //if (DataTable.isDataTable('#all-users')) { //<--clears dt space in certain scenarios
     //    $('#all-users').DataTable().destroy();
@@ -41,6 +45,17 @@ function setUpTable(usersData) {
     if (usersData) {
         var dt = $("#all-users").DataTable({
             data: usersData,
+//            ajax: {
+//                url: 'GetUsers.asmx/GetAllUsers',
+///*                data: {},*/
+//                type: 'GET',
+//                contentType: "application/json; charset=utf-8",
+//                dataType: "json",
+//                dataSrc: "",
+//            },
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
             columns: columns,
             select: 'single',
             error: function (err) {
@@ -53,7 +68,8 @@ function setUpTable(usersData) {
             initComplete: function () { //<-remove if it's not working with getrowdata?
                 console.log("dt setup complete");
             },
-        });
+        }
+        );
 
     } else {
         console.log("user data not available");
@@ -79,11 +95,11 @@ function getRowData() {
         changeWhichCountrySelected();
         //loadCountrySelect();
         currSelRow = table.row(this).index();
-        console.log(table
-            .columns()
-            .header()
-            .map(c => $(c).text())
-            .indexOf("First Name"));
+        //console.log(table
+        //    .columns()
+        //    .header()
+        //    .map(c => $(c).text())
+        //    .indexOf("First Name"));
         //alert(currSelRow);
     });
 }
@@ -160,47 +176,20 @@ function modifyUserCommit() {
             dataType: "json",
             success: () => {
                 var dt = $('#all-users').DataTable();
-                //dt.columns.adjust().draw(false);
-                //var colIndices = [];
                 for (var i = 1; i < modCheck.length; i++) {
                     //column().name() getter setter column
                     //var currCol = dt.column(modCheck[i] + ':name').data();
                     console.log(modCheck[i]); //<--it is collecting the right column names, don't know why it's applying stuff to the wrong cells
                     filterAndUpdateDT(dt, modCheck[i], modifiedUser);
-                    //var regexCol = /[A-Z][a-z]+[A-Z]/g;
-                    //if (modCheck[i].match(regexCol)) { //checks if a space needs to be added ("FirstName" => "First Name")
-                    //    var altCol = modCheck[i].match(regexCol);
-                    //    var altName = altCol.join(" ");
-                    //    let colIndex = dt
-                    //        .columns()
-                    //        .header()
-                    //        .map(c => $(c).text())
-                    //        .indexOf(altName);
-                    //    dt.cell(currSelRow, colIndex)
-                    //        .data(modifiedUser[altName])
-                    //        .draw(); //10.20.2023 - somehow the country is being changed to the last name mod
-                    //}
-                    //else {
-                    //    let colIndex = dt
-                    //        .columns()
-                    //        .header()
-                    //        .map(c => $(c).text())
-                    //        .indexOf(modCheck[i]);
-                    //    console.log(colIndex);
-                    //    dt.cell(currSelRow, colIndex)
-                    //        .data(modifiedUser[modCheck[i]])
-                    //        .draw(); //10.20.2023 - somehow the country is being changed to the last name mod
-                    //}
-                    //dt.row(currSelRow)
-                    //    .draw(false); //not modifiedUser[modCheck][i] because the index
-                }                                                           //is the value of the modCheck at index i?? correct language?
+                }
+                dt.row(currSelRow)
+                    .draw(false); //not modifiedUser[modCheck][i] because the index//is the value of the modCheck at index i?? correct language?
                 //colIndices = getColIndicesByName(dt);
                 Swal.fire( //this only needs to happen if an actual mod occurs
                     'Modification Complete',
                     "User " + currGuy['FirstName'] + " " + currGuy['LastName'] + " changed!",
                     'success'
                 );
-                console.log("success");//<--bind to sweet alerts or toast
             },
             error: function (xhr, status, error) {
                 console.log("Status: " + status);
@@ -334,18 +323,23 @@ function changeWhichCountrySelected() { //remove 'select' attr then assign it to
 //}
 
 function filterAndUpdateDT(dataTable, headerToCheck, comparisonObj) {
-    var regexCol = /[A-Z][a-z]+[A-Z]/g;
-    if (headerToCheck.match(regexCol)) { //checks if a space needs to be added ("FirstName" => "First Name")
-        var altCol = headerToCheck.match(regexCol);
+    var regexCol = /([A-Z][a-z]+){2}/g;
+    var whichHeader = headerToCheck.match(regexCol);
+    if (whichHeader) { //checks if a space needs to be added ("FirstName" => "First Name")
+        var subReg = /[A-Z][a-z]+/g;
+        var altCol = headerToCheck.match(subReg);
+        console.log(altCol.length);
         var altName = altCol.join(" ");
+        console.log(altName); //"outputting 'LastN', for example"
         let colIndex = dataTable
             .columns()
             .header()
             .map(c => $(c).text())
             .indexOf(altName);
+        console.log(colIndex);
         dataTable.cell(currSelRow, colIndex)
-            .data(comparisonObj[altName])
-            //.draw(); //10.20.2023 - somehow the country is being changed to the last name mod
+            .data(comparisonObj[headerToCheck]);
+        //dataTable.row(currSelRow).draw(false); //10.20.2023 - somehow the country is being changed to the last name mod
     }
     else {
         let colIndex = dataTable
@@ -353,11 +347,11 @@ function filterAndUpdateDT(dataTable, headerToCheck, comparisonObj) {
             .header()
             .map(c => $(c).text())
             .indexOf(headerToCheck);
-        console.log(colIndex);
+        console.log(headerToCheck);
         dataTable.cell(currSelRow, colIndex)
             .data(comparisonObj[headerToCheck])
             //.draw(); //10.20.2023 - somehow the country is being changed to the last name mod
     }
-    dataTable.row(currSelRow)
-        .draw(false); //not modifiedUser[modCheck][i] because the index
+    //dataTable.row(currSelRow)
+    //    .draw(false); //not modifiedUser[modCheck][i] because the index
 }
