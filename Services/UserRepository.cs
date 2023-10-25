@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Web.Script.Services;
 using System.Web.Script.Serialization;
 using System.ServiceModel.Web;
+using System;
 
 namespace CommonLegacy.Services
 {
@@ -46,17 +47,27 @@ namespace CommonLegacy.Services
         }
         
         [System.Web.Services.WebMethod]
-        [WebInvoke(Method = "DELETE")]
+        [WebInvoke(Method = "POST")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
-        public void DeleteUser(int userId) 
+        public bool DeleteUser(UserDel userDel) 
         {
             using (IDbConnection dbConn = new SQLiteConnection(cs))
             {
-                dbConn.Open();
-                //Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
-                string sql = "DELETE FROM users WHERE id = @Id";
-                dbConn.Execute(sql, userId);
-                dbConn.Close();
+
+                    dbConn.Open();
+                    //Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+                    string sql = "DELETE FROM users WHERE id = @Id";
+                int affectedRows = dbConn.Execute(sql, new { userDel });
+                    dbConn.Close();
+
+                    if (affectedRows > 0)
+                    {
+                        return true;
+
+                    } else
+                {
+                    return false;
+                }
             }
         }
     }

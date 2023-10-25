@@ -7,6 +7,6 @@ namespace CommonLegacy.Services
     {
         void ModifyUser(UserMod userMod);
         IEnumerable<User> GetAllUsers();
-        void DeleteUser(int userId);
+        bool DeleteUser(UserDel userDel);
     }
 }

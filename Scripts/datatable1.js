@@ -219,34 +219,48 @@ function deleteUserInit() {
         .then((res) => {
             if (res.isConfirmed) {
                 deleteUserCommit();
-                Swal.fire(
-                    'Deletion Complete',
-                    "User " + currGuy['FirstName'] + " " + currGuy['LastName'] + " has been deleted!",
-                    'success'
-                );
+                //Swal.fire(
+                //    'Deletion Complete',
+                //    "User " + currGuy['FirstName'] + " " + currGuy['LastName'] + " has been deleted!",
+                //    'success'
+                //);
             }
         }); //<--now button press on this modal should commence the rest of modifyUser fxn
 
 }
 
 function deleteUserCommit() {
-    $.ajax({
-        type: "DELETE",
-        url: "DeleteUser.asmx/Delete_Commit",
-        data: currGuy["Id"],
+    var userDel = { Id: currGuy["Id"] };
+
+    $.ajax({ //MIGHT NEED TO USE ASHX OR SOMETHING ELSE IF ASMX DOESN'T LIKE DELETE REQUESTS
+            //phase 2: move delete method to code-behind ascx file?
+        method: "POST",
+        url: "UsersDataTable.ascx/Delete_Commit",
+        data: JSON.stringify({ userId: userDel }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: () => {
+            Swal.fire(
+                'Deletion Complete',
+                "User " + currGuy['FirstName'] + " " + currGuy['LastName'] + " has been deleted!",
+                'success'
+            );
             var table = $('#all-users').DataTable();
-            table.row($(this).parents('tr'))
+            table.row(currSelRow)
                 .remove()
                 .draw();
             console.log("success"); //<--bind to sweet alerts or toast
         },
-        error: function (xhr, status, error) {
+        error: function (xhr, status) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Delete Error!',
+                text: "Nothing got deleted.",
+                footer: "#help"
+            });
             console.log("Status: " + status);
             console.log("Response: " + xhr.responseText);
-            console.log("Error: " + error);
+            //console.log("Error: " + error);
         }
     });
 }
@@ -269,10 +283,6 @@ function objComparison(obj1, obj2) {
     else return [true];
 }
 
-//function getColIndicesByName(dTable, nameList) {
-//    var maxIdx = dTable.columns().count() - 1;
-//    var
-//}
 function loadCountryOptions() {
     var sel = $('#country-mod');
     var firstFew = 0;
@@ -284,8 +294,6 @@ function loadCountryOptions() {
             firstFew++;
         })
     });
-    //need to listen for change in select element - do it here?
-
 }
 
 function changeWhichCountrySelected() { //remove 'select' attr then assign it to correct option

@@ -270,7 +270,6 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
-    <Content Include="DeleteUser.asmx" />
     <Content Include="Error.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -392,10 +391,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DeleteUser.asmx.cs">
-      <DependentUpon>DeleteUser.asmx</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="entities\User.cs" />
     <Compile Include="entities\UserDel.cs" />
