@@ -286,3 +286,9 @@ C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegac
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegacy.csproj.CopyComplete
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegacy.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegacy.pdb
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Newtonsoft.Json.Bson.dll
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Cors.dll
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Http.Cors.dll
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Newtonsoft.Json.Bson.pdb
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Newtonsoft.Json.Bson.xml
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Http.Cors.xml

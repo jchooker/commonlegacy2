@@ -235,7 +235,7 @@ function deleteUserCommit() {
     $.ajax({ //MIGHT NEED TO USE ASHX OR SOMETHING ELSE IF ASMX DOESN'T LIKE DELETE REQUESTS
             //phase 2: move delete method to code-behind ascx file?
         method: "POST",
-        url: "UsersDataTable.ascx/Delete_Commit",
+        url: "DeleteUser.ashx",
         data: JSON.stringify({ userId: userDel }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
