@@ -50,7 +50,7 @@ namespace CommonLegacy.Services
         [System.Web.Services.WebMethod]
         [WebInvoke(Method = "POST")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
-        public bool DeleteUser(UserDel userDel) 
+        public bool DeleteUser(int userDel) 
         {
             try
             {
@@ -60,7 +60,7 @@ namespace CommonLegacy.Services
                     dbConn.Open();
                     //Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
                     string sql = "DELETE FROM users WHERE id = @Id";
-                    int affectedRows = dbConn.Execute(sql, userDel.Id);
+                    int affectedRows = dbConn.Execute(sql, new { Id = userDel });
                     dbConn.Close();
 
                     if (affectedRows > 0)

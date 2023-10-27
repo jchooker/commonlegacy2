@@ -236,7 +236,7 @@ function deleteUserCommit() {
             //phase 2: move delete method to code-behind ascx file?
         method: "POST",
         url: "DeleteUser.ashx",
-        data: JSON.stringify({ userId: userDel }),
+        data: JSON.stringify(userDel),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: () => {
@@ -251,7 +251,7 @@ function deleteUserCommit() {
                 .draw();
             console.log("success"); //<--bind to sweet alerts or toast
         },
-        error: function (xhr, status) {
+        error: function (xhr, status, error) {
             Swal.fire({
                 icon: 'error',
                 title: 'Delete Error!',
@@ -260,7 +260,7 @@ function deleteUserCommit() {
             });
             console.log("Status: " + status);
             console.log("Response: " + xhr.responseText);
-            //console.log("Error: " + error);
+            console.log("Error: " + error);
         }
     });
 }

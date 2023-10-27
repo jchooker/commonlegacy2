@@ -20,13 +20,27 @@ namespace CommonLegacy
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "application/json";
-            var json = new StreamReader(context.Request.InputStream).ReadToEnd();
-            var userDel = JsonConvert.DeserializeObject<UserDel>(json);
+            //context.Request.RequestType = "POST";
 
+            //var json = new StreamReader(context.Request.InputStream).ReadToEnd();
+            //var userDel = JsonConvert.DeserializeObject<UserDel>(json);
+            //var userRepository = new UserRepository();
+            //userRepository.DeleteUser(userDel);
+            string jsonData;
+            using (var reader = new StreamReader(context.Request.InputStream))
+            {
+                jsonData = reader.ReadToEnd();
+            }
+
+            var userDel = JsonConvert.DeserializeObject<UserDel>(jsonData);
+            long id = (long)userDel.Id;
+            int userId = (int)id;
+            //int userId = userDel["userId"]["Id"];
             var userRepository = new UserRepository();
-            userRepository.DeleteUser(userDel);
+            userRepository.DeleteUser(userId);
 
             context.Response.Write("Success");
+
     }
 
         public bool IsReusable

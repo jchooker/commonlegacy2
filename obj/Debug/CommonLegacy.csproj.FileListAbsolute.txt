@@ -209,6 +209,7 @@ C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Microsoft.Practic
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Microsoft.ScriptManager.MSAjax.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Microsoft.ScriptManager.WebForms.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Newtonsoft.Json.Bson.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Newtonsoft.Json.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\SQLite-net.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\SQLitePCLRaw.batteries_v2.dll
@@ -230,6 +231,8 @@ C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Text.Encod
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Text.Json.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Threading.Tasks.Extensions.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.ValueTuple.dll
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Cors.dll
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Http.Cors.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Http.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Optimization.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\WebActivatorEx.dll
@@ -263,6 +266,8 @@ C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Microsoft.Extensi
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Microsoft.Practices.ServiceLocation.pdb
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Microsoft.Practices.ServiceLocation.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Newtonsoft.Json.xml
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Newtonsoft.Json.Bson.pdb
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Newtonsoft.Json.Bson.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\SQLite-net.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Buffers.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Collections.Immutable.xml
@@ -278,6 +283,7 @@ C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Text.Json.
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.ValueTuple.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Http.xml
+C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Http.Cors.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Optimization.xml
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Antlr3.Runtime.pdb
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Microsoft.AspNet.FriendlyUrls.xml
@@ -286,9 +292,3 @@ C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegac
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegacy.csproj.CopyComplete
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegacy.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegacy.pdb
-C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Newtonsoft.Json.Bson.dll
-C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Cors.dll
-C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Http.Cors.dll
-C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Newtonsoft.Json.Bson.pdb
-C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\Newtonsoft.Json.Bson.xml
-C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\bin\System.Web.Http.Cors.xml

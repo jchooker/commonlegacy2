@@ -35,14 +35,14 @@ namespace CommonLegacy
             return usersJson;
         }
 
-        [WebMethod]
-        //[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]      
-        [WebInvoke(Method = "POST")]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
-        protected void Delete_Commit(UserDel userId)
-        {
-            IUserRepository userRepository = Application["UserRepository"] as IUserRepository;
-            userRepository?.DeleteUser(userId); //<-should be equiv of statement below:
-        }
+        //[WebMethod]
+        ////[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]      
+        //[WebInvoke(Method = "POST")]
+        //[ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
+        //protected void Delete_Commit(UserDel userId)
+        //{
+        //    IUserRepository userRepository = Application["UserRepository"] as IUserRepository;
+        //    userRepository?.DeleteUser(userId); //<-should be equiv of statement below:
+        //}
     }
 }
