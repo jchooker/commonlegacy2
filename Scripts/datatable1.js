@@ -45,14 +45,6 @@ function setUpTable() {
     if (usersData) {
         var dt = $("#all-users").DataTable({
             data: usersData,
-//            ajax: {
-//                url: 'GetUsers.asmx/GetAllUsers',
-///*                data: {},*/
-//                type: 'GET',
-//                contentType: "application/json; charset=utf-8",
-//                dataType: "json",
-//                dataSrc: "",
-//            },
             type: 'GET',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -300,7 +292,9 @@ function changeWhichCountrySelected() { //remove 'select' attr then assign it to
     var sel = '#country-mod';
     $(sel + ' option:selected').removeAttr('selected'); //<--resets selected with first click and every additional one
     $(sel + ' option[value=0]').attr('selected', 'selected'); //sets to 'Select country' option in case neither of the conditions are met;
-                                        //this could be done as an "else", but that could involve switching back and forth b/w options
+    //this could be done as an "else", but that could involve switching back and forth b/w options
+    var minLev = [null, null];
+    var needsMinLev = true;
     $(sel + ' option').each(function (idx, country) { //check for exact match & "contains" match have to happen separately
         //var regText = '^' + country.text;
         const regex = new RegExp("(?<!.)" + currGuy["Country"], "g"); //check needs to be getting country names from json data that is populating dt
@@ -308,15 +302,35 @@ function changeWhichCountrySelected() { //remove 'select' attr then assign it to
             $(sel + ' option:selected').removeAttr('selected');
             $(this).attr('selected', 'selected'); //"China" issue: confirm what '$(this)' is -- UPDATE: IT WAS the next $.each overwriting the "China" result
             console.log('1st condition: ' + country.text); //*****AND 'Russian Federation' works with 'Russia' because I only have look AHEADS*/
+            needsMinLev = false;
             return false; //<--
         }
         else if (country.text.includes(currGuy['Country'])) {
             $(sel + ' option:selected').removeAttr('selected');
             $(this).attr('selected', 'selected');
             console.log('2nd condition: ' + country.text);
+            needsMinLev = false;
             return false;
         }
+        else {
+            const levenshtein = require('js-levenshtein');
+            var x = levenshtein(country.text, currGuy['Country']);
+            if (minLev[0]) {
+                if (x < minLev[1]) {
+                    minLev[0] = $(this).text;
+                    minLev[1] = x;
+                }
+            }
+            else {
+                minLev[0] = $(this).text;
+                minLev[1] = x;
+            }
+        }
     });
+    if (needsMinLev) {
+        $(sel + ' option:selected').removeAttr('selected');
+        $(sel + 'option:contains(' + minLev[0] + ')').attr('selected', 'selected');
+    }
     //$(sel + ' option').each(function (idx, country) {
     //    if (country.text.includes( currGuy['Country'] )) $(this).attr('selected', 'selected');
     //});
