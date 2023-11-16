@@ -32,6 +32,42 @@ namespace CommonLegacy.Services
                 return userList;
             }
         }
+
+        [System.Web.Services.WebMethod]
+        [WebInvoke(Method = "POST")]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
+        public bool AddUser(User userToAdd)
+        {
+            try
+            {
+
+                using (IDbConnection dbConn = new SQLiteConnection(cs))
+                {
+                    dbConn.Open();
+                    Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+                    string sql = "@" +
+                        "INSERT INTO users " +
+                        "(FirstName, LastName, Email, Gender, IpAddress, Age, Country, ArtistWork, " +
+                        "FavoriteColor, ProfilePicture, SymbolCombination, LatestCreativeMantra, " +
+                        "Bio, IsModified, IsAdmin) " +
+                        "VALUES " +
+                        "(@FirstName, @LastName, @Email, @Gender, @IpAddress, @Age, @Country, @ArtistWork, " +
+                        "@FavoriteColor, @ProfilePicture, @SymbolCombination, @LatestCreativeMantra, " +
+                        "@Bio, @IsModified, @IsAdmin)";
+                    int affectedRows = dbConn.Execute(sql, userToAdd);
+                    dbConn.Close();
+
+                    return affectedRows > 0;
+                }
+            } catch (Exception ex)
+            {
+                HttpContext.Current.Items.Add("Exception", ex);
+                System.Web.HttpContext.Current.Server.Transfer("Error.aspx");
+
+                return false;
+            }
+        }
+
         [System.Web.Services.WebMethod]
         [WebInvoke(Method = "POST")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]

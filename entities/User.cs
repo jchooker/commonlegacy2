@@ -14,15 +14,15 @@ namespace CommonLegacy.entities
         [Required]
         public string Email { get; set; }
         public string Gender { get; set; }
-        public string IpAddress { get; set; }
-        public int Age { get; set; }
-        public string Country { get; set; }
-        public string ArtistWork { get; set; }
-        public string FavoriteColor { get; set; }
-        public string ProfilePicture { get; set; }
-        public string SymbolCombination { get; set; }
-        public string LatestCreativeMantra { get; set; }
-        public string Bio { get; set; }
+        public string IpAddress { get; set; } = null;
+        public int? Age { get; set; }
+        public string Country { get; set; } = null;
+        public string ArtistWork { get; set; } = null;
+        public string FavoriteColor { get; set; } = null;
+        public string ProfilePicture { get; set; } = null;
+        public string SymbolCombination { get; set; } = null;
+        public string LatestCreativeMantra { get; set; } = null;
+        public string Bio { get; set; } = null;
         public bool IsModified { get; set; } = false;
         public bool IsAdmin { get; set; } = false;
     }

@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -37,11 +38,32 @@ namespace CommonLegacy
             int userId = (int)id;
             //int userId = userDel["userId"]["Id"];
             var userRepository = new UserRepository();
-            userRepository.DeleteUser(userId);
+            bool delSuccess = userRepository.DeleteUser(userId);
 
-            context.Response.Write("Success");
+            if (delSuccess)
+            {
+                var responseObj = new
+                {
+                    status = "Success",
+                    message = "User deletion successful"
+                };
 
-    }
+                context.Response.Write(JsonConvert.SerializeObject(responseObj));
+                //^^Works now bc I'm serializing the response? serialize coming and going?
+            }
+            else
+            {
+                var responseObj = new
+                {
+                    status = "Error",
+                    message = "User deletion failed"
+                };
+
+                context.Response.Write(JsonConvert.SerializeObject(responseObj));
+            }
+
+
+        }
 
         public bool IsReusable
         {

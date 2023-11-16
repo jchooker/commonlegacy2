@@ -96,13 +96,54 @@ function getRowData() {
     });
 }
 
+function cancelBtnClick() {
+    var table = $('#all-users').DataTable();
+    table.rows({ selected: true }).deselect();
+    currGuy['Id'] = '';
+    currGuy['FirstName'] = '';
+    currGuy['LastName'] = '';
+    currGuy['Email'] = '';
+    currGuy['Gender'] = '';
+    currGuy['Age'] = '';
+    currGuy['Country'] = '';
+    cancelCommonFunc();
+    $('#hidden-body').addClass('vis');
+}
+
+function addInitBtnClick() {
+    $('h1.pre-sel').hide();
+    $('h3.pre-sel').hide();
+    $('#add-init-btn').hide();
+    $('#hidden-body2').removeClass('vis');
+    $('#toggle-header').removeClass('vis');
+    $('#toggle-header').addClass('d-flex flex-column align-items-center');
+}
+
+function cancelBtnClick2() {
+    cancelCommonFunc();
+    $('#hidden-body2').addClass('vis');
+    $('#add-init-btn').show();
+}
+
+function cancelCommonFunc() {
+    $('h1.pre-sel').show();
+    $('h3.pre-sel').show();
+    $('#toggle-header').addClass('vis');
+    $('#toggle-header').removeClass('d-flex flex-column align-items-center');
+}
+
 function modifyContainer1() {
     $('#all-users').one('click', 'tr', function () {
         $('h1.pre-sel').hide();
+        $('h3.pre-sel').hide();
         $('#toggle-header').removeClass('vis');
         $('#toggle-header').addClass('d-flex flex-column align-items-center');
         $('#hidden-body').removeClass('vis');
     });
+}
+
+function addUserCommit() {
+    return;
 }
 
 function modifyUserInit() { //message for whether no modifications were made
@@ -231,7 +272,8 @@ function deleteUserCommit() {
         data: JSON.stringify(userDel),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: () => {
+        success: (data) => { //ajax request is receiving "error" from ashx method - localized to "context.Response.Write("Success");" command?
+            console.log("Success Response: ", data);
             Swal.fire(
                 'Deletion Complete',
                 "User " + currGuy['FirstName'] + " " + currGuy['LastName'] + " has been deleted!",
@@ -241,18 +283,14 @@ function deleteUserCommit() {
             table.row(currSelRow)
                 .remove()
                 .draw();
-            console.log("success"); //<--bind to sweet alerts or toast
         },
-        error: function (xhr, status, error) {
+        error: function (data) {
             Swal.fire({
                 icon: 'error',
                 title: 'Delete Error!',
-                text: "Nothing got deleted.",
+                text: data.message,
                 footer: "#help"
             });
-            console.log("Status: " + status);
-            console.log("Response: " + xhr.responseText);
-            console.log("Error: " + error);
         }
     });
 }
@@ -313,8 +351,7 @@ function changeWhichCountrySelected() { //remove 'select' attr then assign it to
             return false;
         }
         else {
-            const levenshtein = require('js-levenshtein');
-            var x = levenshtein(country.text, currGuy['Country']);
+            var x = levenshteinDistance(country.text, currGuy['Country']);
             if (minLev[0]) {
                 if (x < minLev[1]) {
                     minLev[0] = $(this).text;
@@ -331,11 +368,34 @@ function changeWhichCountrySelected() { //remove 'select' attr then assign it to
         $(sel + ' option:selected').removeAttr('selected');
         $(sel + 'option:contains(' + minLev[0] + ')').attr('selected', 'selected');
     }
+
     //$(sel + ' option').each(function (idx, country) {
     //    if (country.text.includes( currGuy['Country'] )) $(this).attr('selected', 'selected');
     //});
 
 }
+
+const levenshteinDistance = (str1 = '', str2 = '') => {
+    const track = Array(str2.length + 1).fill(null).map(() =>
+        Array(str1.length + 1).fill(null));
+    for (let i = 0; i <= str1.length; i += 1) {
+        track[0][i] = i;
+    }
+    for (let j = 0; j <= str2.length; j += 1) {
+        track[j][0] = j;
+    }
+    for (let j = 1; j <= str2.length; j += 1) {
+        for (let i = 1; i <= str1.length; i += 1) {
+            const indicator = str1[i - 1] === str2[j - 1] ? 0 : 1;
+            track[j][i] = Math.min(
+                track[j][i - 1] + 1, // deletion
+                track[j - 1][i] + 1, // insertion
+                track[j - 1][i - 1] + indicator, // substitution
+            );
+        }
+    }
+    return track[str2.length][str1.length];
+};
 
 //function trackSelectChange(currUser) {
 //    var sel = '#country-mod';
