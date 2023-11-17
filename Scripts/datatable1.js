@@ -8,6 +8,8 @@
     Country: ""
 };
 
+var clickState = "auto";
+
 /////***COUNTRY MODS WILL DYNAMICALLY UPDATE, BUT NONE OTHERS WILL!!! CURIOUS!!! 10.23.2023 - AFTER ABANDONMENT OF ASMX APPROACH*/
 
 const columns = [ //set it here so we can get col idx
@@ -87,6 +89,7 @@ function getRowData() {
         changeWhichCountrySelected();
         //loadCountrySelect();
         currSelRow = table.row(this).index();
+        $('#add-init-btn').hide();
         //console.log(table
         //    .columns()
         //    .header()
@@ -99,6 +102,7 @@ function getRowData() {
 function cancelBtnClick() {
     var table = $('#all-users').DataTable();
     table.rows({ selected: true }).deselect();
+    $('#add-init-btn').show();
     currGuy['Id'] = '';
     currGuy['FirstName'] = '';
     currGuy['LastName'] = '';
@@ -111,18 +115,23 @@ function cancelBtnClick() {
 }
 
 function addInitBtnClick() {
+    toggleTableClick(); //need to re-toggle for all possible events!
+    var table = $('#all-users').DataTable();
+    table.rows({ selected: true }).deselect();
     $('h1.pre-sel').hide();
     $('h3.pre-sel').hide();
     $('#add-init-btn').hide();
     $('#hidden-body2').removeClass('vis');
     $('#toggle-header').removeClass('vis');
     $('#toggle-header').addClass('d-flex flex-column align-items-center');
+    loadCountryOptions();
 }
 
 function cancelBtnClick2() {
     cancelCommonFunc();
     $('#hidden-body2').addClass('vis');
     $('#add-init-btn').show();
+    toggleTableClick();
 }
 
 function cancelCommonFunc() {
@@ -133,7 +142,7 @@ function cancelCommonFunc() {
 }
 
 function modifyContainer1() {
-    $('#all-users').one('click', 'tr', function () {
+    $('#all-users').on('click', 'tr', function () {
         $('h1.pre-sel').hide();
         $('h3.pre-sel').hide();
         $('#toggle-header').removeClass('vis');
@@ -314,7 +323,7 @@ function objComparison(obj1, obj2) {
 }
 
 function loadCountryOptions() {
-    var sel = $('#country-mod');
+    var sel = $('.country-list');
     var firstFew = 0;
     $.getJSON('./json/countries.json', function (data) {
         $.each(data, function (idx, country) {
@@ -436,4 +445,9 @@ function filterAndUpdateDT(dataTable, headerToCheck, comparisonObj) {
     }
     //dataTable.row(currSelRow)
     //    .draw(false); //not modifiedUser[modCheck][i] because the index
+}
+
+function toggleTableClick() {
+    clickState = (clickState === 'none') ? 'auto' : 'none';
+    $('#all-users *').css("pointer-events", clickState);
 }

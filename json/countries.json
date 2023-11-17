@@ -212,10 +212,6 @@
         "Code": "CR"
     },
     {
-        "Name": "Cote DIvoire",
-        "Code": "CI"
-    },
-    {
         "Name": "Croatia",
         "Code": "HR"
     },
@@ -430,6 +426,10 @@
     {
         "Name": "Italy",
         "Code": "IT"
+    },
+    {
+        "Name": "Ivory Coast",
+        "Code": "CI"
     },
     {
         "Name": "Jamaica",
@@ -668,7 +668,7 @@
         "Code": "PW"
     },
     {
-        "Name": "Palestinian Territory, Occupied",
+        "Name": "Palestinian Territory",
         "Code": "PS"
     },
     {

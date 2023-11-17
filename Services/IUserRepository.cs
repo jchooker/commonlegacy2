@@ -7,7 +7,7 @@ namespace CommonLegacy.Services
     {
         void ModifyUser(UserMod userMod);
         IEnumerable<User> GetAllUsers();
-        int AddUser(User user);
+        bool AddUser(User user);
         bool DeleteUser(int userDel);
     }
 }

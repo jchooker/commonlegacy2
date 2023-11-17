@@ -63,7 +63,7 @@
                                             <label class="col-form-label" for="country-mod">Country: &nbsp;</label>
                                         </div>
                                         <div class="col-4">
-                                            <select id="country-mod" name="country-mod" class="form-select font3">
+                                            <select id="country-mod" name="country-mod" class="form-select font3 country-list">
                                                 <option value=0>Select a country</option>
                                             </select>
                                         </div>
@@ -122,15 +122,21 @@
                                             <label class="col-form-label" for="country-add">Country: &nbsp;</label>
                                         </div>
                                         <div class="col-4">
-                                            <select id="country-add" name="country-add" class="form-select font3">
+                                            <select id="country-add" name="country-add" class="form-select font3 country-list">
                                                 <option value=0>Select a country</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="input-group col-md-5">
+                                    <div class="row d-flex justify-contents-between w-100 mb-2">
+                                        <div class="col-6">
+                                            <label class="col-form-label" for="bio-add">Short Bio: &nbsp;</label>
+                                            <textarea id="bio-add" name="bio-add" class="form-control font3" rows="5" placeholder="Enter short bio"></textarea>
+                                        </div>                                            
+                                    </div>
+                                </div>
                             </div>
-
-
                             <div class="d-grid gap-2">
                                 <button class="btn btn-success btn-lg font2 mt-4" type="button">Submit & Add New User</button>
                                 <button class="btn btn-secondary btn-lg font2" type="button" onclick="cancelBtnClick2();">Cancel & Return</button>
