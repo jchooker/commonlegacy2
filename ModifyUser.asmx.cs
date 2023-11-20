@@ -7,9 +7,6 @@ using System.Web.Services;
 
 namespace CommonLegacy
 {
-    /// <summary>
-    /// Summary description for ModifyUser
-    /// </summary>
     [WebService(Namespace = "https://localhost:44391/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
@@ -17,17 +14,13 @@ namespace CommonLegacy
     [System.Web.Script.Services.ScriptService]
     public class ModifyUser : System.Web.Services.WebService
     {
-        [WebMethod]
-        //[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json)]
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]        
+        [WebMethod]      
         [WebInvoke(Method = "POST")]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
         public void Modify_Commit(UserMod jsUser)
         {
             //this is where UserMod comes into play - to modify
             IUserRepository userRepository = Application["UserRepository"] as IUserRepository;
-            //UserMod userMod = JsonConvert.DeserializeObject<UserMod>(jsUser);
-            //userRepository?.ModifyUser(userMod); //<-should be equiv of statement below:
             userRepository?.ModifyUser(jsUser); //<-should be equiv of statement below:
             //^^non-global version of this needed? Viewback, even?
         }

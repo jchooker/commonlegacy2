@@ -292,3 +292,9 @@ C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegac
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegacy.csproj.CopyComplete
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegacy.dll
 C:\Users\jchooker\source\repos\commonlegacy-3\CommonLegacy\obj\Debug\CommonLegacy.pdb
+D:\workprojs\dotnet fw\commonlegacy-10.19.2023-onwards\bin\Newtonsoft.Json.Bson.dll
+D:\workprojs\dotnet fw\commonlegacy-10.19.2023-onwards\bin\System.Web.Cors.dll
+D:\workprojs\dotnet fw\commonlegacy-10.19.2023-onwards\bin\System.Web.Http.Cors.dll
+D:\workprojs\dotnet fw\commonlegacy-10.19.2023-onwards\bin\Newtonsoft.Json.Bson.pdb
+D:\workprojs\dotnet fw\commonlegacy-10.19.2023-onwards\bin\Newtonsoft.Json.Bson.xml
+D:\workprojs\dotnet fw\commonlegacy-10.19.2023-onwards\bin\System.Web.Http.Cors.xml

@@ -90,12 +90,6 @@ function getRowData() {
         //loadCountrySelect();
         currSelRow = table.row(this).index();
         $('#add-init-btn').hide();
-        //console.log(table
-        //    .columns()
-        //    .header()
-        //    .map(c => $(c).text())
-        //    .indexOf("First Name"));
-        //alert(currSelRow);
     });
 }
 

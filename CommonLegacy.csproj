@@ -287,6 +287,7 @@
     <Content Include="lib\bootstrap\js\popper.min.js" />
     <Content Include="lib\css\master.css" />
     <Content Include="lib\css\musecraft.css" />
+    <Content Include="lib\css\tileshuffle.css" />
     <Content Include="lib\css\userlogin.css" />
     <Content Include="lib\css\usermgmt.css" />
     <Content Include="lib\css\userprofile.css" />
@@ -300,6 +301,7 @@
     <Content Include="lib\jquery\jquery-ui.1.13.2.min.js" />
     <Content Include="lib\js\home.js" />
     <Content Include="lib\js\musecraft.js" />
+    <Content Include="lib\js\tileshuffle.js" />
     <Content Include="lib\js\usermgmt.js" />
     <Content Include="lib\js\userprofile.js" />
     <Content Include="lib\js\userregistration.js" />
@@ -350,6 +352,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="TileShuffle.aspx" />
     <Content Include="tiles\asmodeus.html" />
     <Content Include="tiles\astaroth.html" />
     <Content Include="tiles\baphomet.html" />
@@ -452,6 +455,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="SQLiteAccess.cs" />
+    <Compile Include="TileShuffle.aspx.cs">
+      <DependentUpon>TileShuffle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TileShuffle.aspx.designer.cs">
+      <DependentUpon>TileShuffle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserManagement.aspx.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

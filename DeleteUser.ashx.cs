@@ -21,12 +21,6 @@ namespace CommonLegacy
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "application/json";
-            //context.Request.RequestType = "POST";
-
-            //var json = new StreamReader(context.Request.InputStream).ReadToEnd();
-            //var userDel = JsonConvert.DeserializeObject<UserDel>(json);
-            //var userRepository = new UserRepository();
-            //userRepository.DeleteUser(userDel);
             string jsonData;
             using (var reader = new StreamReader(context.Request.InputStream))
             {

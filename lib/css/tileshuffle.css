@@ -1,0 +1,21 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --dark-gry-txt: #202020;
+    --grn-bkgrd: #7ba191;
+    --dark-brwn: #80461B;
+    --aged-white: #FCF5E5;
+    --bone: #e3dac9;
+    --yuji: 'Yuji Syuku', serif;
+    --raleway: 'Raleway', sans-serif;
+    --inter: 'Inter', sans-serif;
+}
+
+#threejscontainer {
+    width: 300px;
+    height: 300px;
+}
