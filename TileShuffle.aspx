@@ -8,8 +8,11 @@
             }
         }
     </script>--%>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js" integrity="sha512-/WaZCC76Yn6MLEoK6b9np9yiLBet/RngBS33X1P0SHuag6j2E0e5rT7jbA2CvXCydN6+FkDYNx8FBM+vkzsthw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/drag-controls@1.0.4/dist/drag-controls.min.js" integrity="sha256-BwQsWYJdW0ySIydV2OMDy10v6c0Mb/hckE5qqKAV3XE=" crossorigin="anonymous"></script>
+    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js" integrity="sha512-/WaZCC76Yn6MLEoK6b9np9yiLBet/RngBS33X1P0SHuag6j2E0e5rT7jbA2CvXCydN6+FkDYNx8FBM+vkzsthw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--%>
+    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--%>
+    <%--<script src="https://cdn.jsdelivr.net/npm/drag-controls@1.0.4/dist/drag-controls.min.js" integrity="sha256-BwQsWYJdW0ySIydV2OMDy10v6c0Mb/hckE5qqKAV3XE=" crossorigin="anonymous"></script>--%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r135/build/three.module.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r135/examples/jsm/controls/DragControls.js"></script>
     <script src="./lib/js/tileshuffle.js" language="javascript" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="/lib/css/tileshuffle.css" />
 </asp:Content>
